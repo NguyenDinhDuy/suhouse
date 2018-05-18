@@ -159,7 +159,8 @@ class FrontendController extends Controller
     {
 //        dd($request->code);
         $data = DB::table('orders')->where('bill_code', $request->code)->get();
-//        dd($data);
+
+//        dd(gettype($data));
         return ($data);
     }
 }

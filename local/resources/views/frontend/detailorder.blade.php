@@ -3,12 +3,13 @@
 <style>
     #tab td{
         border: 1px solid #ccc;
-        <div class="beta-products-list">
+
     }
 </style>
 @section('main')
     <div class="container" style="padding-left: 210px;padding-right: 210px">
         <div id="content" class="row">
+            <div class="beta-products-list">
                 <div class="row">
                     <div class="widget-title"><span class="icon"><i class="icon-th"></i></span>
                         <h5>Chi tiết đơn
