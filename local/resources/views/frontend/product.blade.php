@@ -412,8 +412,9 @@
                 <div class="row">
 
                     <div class="col-md-10">
-                        <div class="fb-comments" data-href="{{ url("/detail/$item->prod_id/$item->prod_slug.html") }}" data-width="100%" data-numposts="5"></div>
-                        <meta property="fb:429467917501529" content="{429467917501529}" />
+                        <div class="fb-comments" data-href="{{ url("/detail/$item->prod_id/$item->prod_slug.html") }}"
+                             data-width="100%" data-numposts="5"></div>
+                        <meta property="fb:429467917501529" content="{429467917501529}"/>
                         <meta property="fb:admins" content="{100006364260597}"/>
                     </div>
 
@@ -508,20 +509,25 @@
                         type: "get",
                         dataType: "json",
                         success: function (result) {
-                            let url = '{{asset('local/storage/app/avatar/')}}';
-                            // $('[rel="soluong"]').val(result[0].quantity).attr('max', result[0].quantity)
-                            $('#sl').val(result[0].quantity)
-                            if (result[0].quantity == 0) {
+                            //them
+                            if (!$.trim(result)) {
                                 $('#buy').attr('disabled', true)
                             } else {
-                                $('#buy').attr('disabled', false)
+                                let url = '{{asset('local/storage/app/avatar/')}}';
+                                // $('[rel="soluong"]').val(result[0].quantity).attr('max', result[0].quantity)
+                                $('#sl').val(result[0].quantity)
+                                if (result[0].quantity == 0) {
+                                    $('#buy').attr('disabled', true)
+                                } else {
+                                    $('#buy').attr('disabled', false)
+                                    $('#thumbnaillar').attr('src', url + '/' + result[0].image)
+                                }
+                                $('[rel="soluong"]').attr('max', result[0].quantity)
+                                $('#thumbnail').attr('src', url + '/' + result[0].image)
                                 $('#thumbnaillar').attr('src', url + '/' + result[0].image)
+                                $('#srcImg').val(result[0].image)
+                                $('#slmax').val(result[0].quantity)
                             }
-                            $('[rel="soluong"]').attr('max', result[0].quantity)
-                            $('#thumbnail').attr('src', url + '/' + result[0].image)
-                            $('#thumbnaillar').attr('src', url + '/' + result[0].image)
-                            $('#srcImg').val(result[0].image)
-                            $('#slmax').val(result[0].quantity)
                         }
                     });
                 }

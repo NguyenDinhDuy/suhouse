@@ -14,7 +14,7 @@
 Route::get('/', 'FrontendController@getHome');
 Auth::routes();
 Route::get('test', function () {
-return view('frontend.history');
+    return view('frontend.history');
 });
 //Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
@@ -26,11 +26,11 @@ Route::get('category/{id}/{slug}.html', 'FrontendController@getCategory');
 Route::get('tim-kiem.html', 'FrontendController@search')->name('search');
 Route::get('detail/{id}/{slug}.html', 'FrontendController@getDetailProduct');
 Route::get('quantity/{id}/{color}/{size}', 'FrontendController@getQuanProduct');
-Route::get('history','FrontendController@history');
-Route::get('detailorder/{id}','FrontendController@detailorder');
+Route::get('history', 'FrontendController@history');
+Route::get('detailorder/{id}', 'FrontendController@detailorder');
 
 Route::get('myform', 'CartController@pay');
-Route::post('select-ajax', ['as'=>'select-ajax','uses'=>'CartController@selectAjax']);
+Route::post('select-ajax', ['as' => 'select-ajax', 'uses' => 'CartController@selectAjax']);
 
 Route::get('success/{code}', 'FrontendController@getSuccess')->name('success');
 Route::get('ordersearch', 'FrontendController@getOrderSearch')->name('tra-cuu-don-hang');
@@ -114,5 +114,10 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('edit/{id}', 'OrderController@update');
     });
 
+    Route::group(['prefix' => 'thongke'], function () {
+        Route::get('order', 'ThongKeController@thongKeOrder');
+        Route::get('product', 'ThongKeController@thongKeProduct');
+//        Route::get('doanhthu', 'ThongKeController@thongKeDoanhThu');
 
+    });
 });

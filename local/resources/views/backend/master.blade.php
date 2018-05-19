@@ -133,7 +133,8 @@
             </a>
             <ul class="children collapse" id="sub-item-2">
                 <li>
-                    <a class="" href="#">
+                    {{--<a>--}}
+                    <a class="" href="{{asset('admin/thongke/order')}}">
                         <svg class="glyph stroked chevron-right">
                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#stroked-chevron-right">
                             </use>
@@ -142,7 +143,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="" href="#">
+                    <a class="" href="{{asset('admin/thongke/product')}}">
                         <svg class="glyph stroked chevron-right">
                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#stroked-chevron-right"></use>
                         </svg>
@@ -150,7 +151,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="" href="#">
+                    <a class="" href="{{asset('admin/thongke/doanhthu')}}">
                         <svg class="glyph stroked chevron-right">
                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#stroked-chevron-right"></use>
                         </svg>
