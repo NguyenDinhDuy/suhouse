@@ -14,12 +14,31 @@
                         <table id="prodlist" class="table table-hover table-bordered" style="margin-top:20px;">
                             <thead>
                             <tr class="bg-primary">
-                                <th width="25%">Tên khách hàng</th>
-                                <th>Email</th>
-                                <th>Số đơn hàng</th>
+                                <th width="8%">Ảnh sản phẩm</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Mã sản phẩm</th>
+                                <th>Giá</th>
+                                <th>Danh mục</th>
+                                <th>Số lượng bán</th>
                             </tr>
                             </thead>
                             <tbody>
+                            @foreach($products as $product)
+                                @foreach($productmosts as $productmost)
+                                    @if($product->prod_id==$productmost->prod_id)
+                                        <tr>
+                                            <td><img width="60px" height="60px"
+                                                     src="{{asset('local/storage/app/avatar/'.$product->prod_thumbnail)}}"
+                                                     class="thumbnail"></td>
+                                            <td>{{$product->prod_name}}</td>
+                                            <td>{{$product->prod_code}}</td>
+                                            <td>{{$product->promotion_price}}</td>
+                                            <td>{{$product->cate_name}}</td>
+                                            <td>{{$productmost->order_count}}</td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -35,12 +54,32 @@
                         <table id="prodlist" class="table table-hover table-bordered" style="margin-top:20px;">
                             <thead>
                             <tr class="bg-primary">
-                                <th width="25%">Tên khách hàng</th>
-                                <th>Email</th>
-                                <th>Số đơn hàng</th>
+                                <th width="8%">Ảnh sản phẩm</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Mã sản phẩm</th>
+                                <th>Giá</th>
+                                <th>Danh mục</th>
+                                <th>Số lượng bán</th>
                             </tr>
                             </thead>
                             <tbody>
+                            @foreach($products as $product)
+                                @foreach($productless as $productles)
+                                    @if($product->prod_id==$productles->prod_id)
+                                        <tr>
+                                            <td><img width="60px" height="60px"
+                                                     src="{{asset('local/storage/app/avatar/'.$product->prod_thumbnail)}}"
+                                                     class="thumbnail"></td>
+                                            <td>{{$product->prod_name}}</td>
+                                            <td>{{$product->prod_code}}</td>
+                                            <td>{{$product->promotion_price}}</td>
+                                            <td>{{$product->cate_name}}</td>
+                                            <td>{{$productles->order_count}}</td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            @endforeach
+                            {{--{{$productless->links()}}--}}
                             </tbody>
                         </table>
                     </div>

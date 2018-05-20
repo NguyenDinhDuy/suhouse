@@ -117,7 +117,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'thongke'], function () {
         Route::get('order', 'ThongKeController@thongKeOrder');
         Route::get('product', 'ThongKeController@thongKeProduct');
-//        Route::get('doanhthu', 'ThongKeController@thongKeDoanhThu');
+        Route::get('doanhthu', 'ThongKeController@thongKeDoanhThu');
 
     });
 });
