@@ -12,6 +12,10 @@
         <div class="row">
             <div class="col-xs-12 col-md-12 col-lg-12">
                 <div class="widget-content nopadding">
+                    @if(Auth::guard('admin')->user()->level==1)
+                        <a style="margin-bottom: 10px" href="{{asset('admin/add')}}" class="btn btn-primary">Thêm nhân
+                            viên</a>
+                    @endif
                     <table class="table table-bordered" id="myTable">
                         <thead>
                         <tr>
@@ -33,11 +37,12 @@
                                 <td>{{ $admin->phone_number }}</td>
                                 <td> @if($admin->level==1)Admin @elseif($admin->level==2)Nhân viên @endif</td>
                                 <td>
-                                <a href="{{asset('admin/edit/'.$admin->id)}}"
-                                class="btn btn-warning"><span
-                                class="glyphicon glyphicon-edit"></span></a>
-                                <a href="{{asset('admin/delete/'.$admin->id)}}" onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng náy?')"
-                                class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                                    <a href="{{asset('admin/edit/'.$admin->id)}}"
+                                       class="btn btn-warning"><span
+                                                class="glyphicon glyphicon-edit"></span></a>
+                                    <a href="{{asset('admin/delete/'.$admin->id)}}"
+                                       onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng náy?')"
+                                       class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
                                 </td>
                             </tr>
                         @endforeach

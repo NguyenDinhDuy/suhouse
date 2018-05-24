@@ -150,27 +150,29 @@
     </div> <!-- .header-top -->
     <div class="header-body">
         <div class="container beta-relative">
-            <div class="pull-right beta-components space-left ov">
-                <div class="beta-comp" style="margin-bottom: 10px">
-                    <form role="search" method="get" id="searchform" action="{{ route('search') }}">
+            {{--<div class="pull-right beta-components space-left ov">--}}
+                {{--<div class="beta-comp" style="margin-bottom: 10px">--}}
+
+                    {{--<form role="search" method="get" id="searchform" action="{{ route('search') }}">--}}
                         {{--<form role="search" method="get" id="searchform">--}}
-                        <input type="text" value="" name="search" id="s" placeholder="Nhập từ khóa..."/>
-                        <button class="fa fa-search" type="submit" id="searchsubmit"></button>
-                    </form>
-                </div>
-                <div class="beta-comp">
-                    <a href="{{asset('cart/show')}}">
-                        <img style="position: relative;" src="assets/dest/images/bag.png">
-                        @if(Cart::count()>0)
-                            <span style="position:absolute;text-align: center;left: 1133px;top: 10px">{{Cart::count()}}</span>
-                        @endif
-                    </a>
-                </div>
-            </div>
-            <div class="clearfix"></div>
+                        {{--<input type="text" value="" name="search" id="s" placeholder="Nhập từ khóa..."/>--}}
+                        {{--<button class="fa fa-search" type="submit" id="searchsubmit"></button>--}}
+                    {{--</form>--}}
+                {{--</div>--}}
+                {{--<div class="beta-comp">--}}
+
+                    {{--<a href="{{asset('cart/show')}}">--}}
+                        {{--<img style="position: relative;" src="assets/dest/images/bag.png">--}}
+                        {{--@if(Cart::count()>0)--}}
+                            {{--<span style="position:absolute;text-align: center;left: 1133px;top: 10px">{{Cart::count()}}</span>--}}
+                        {{--@endif--}}
+                    {{--</a>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="clearfix"></div>--}}
         </div> <!-- .container -->
     </div> <!-- .header-body -->
-    <div class="header-bottom" style="background: #fff">
+    <div class="header-bottom" style="padding-top:20px;background: #fff">
         <div class="container">
             <a class="visible-xs beta-menu-toggle pull-right" href="#"><span class='beta-menu-toggle-text'>Menu</span>
                 <i class="fa fa-bars"></i></a>
@@ -189,7 +191,26 @@
                     @endforeach
                     <li><a class="text-center"
                            style="font-family:monospace;font-size:18px;color: #666;font-weight: bold;padding: 10px;margin-left: 10px"
-                           href="{{asset('/ordersearch')}}">TRA CỨU ĐƠN HÀNG</a>
+                           href="{{asset('/ordersearch')}}">ĐƠN HÀNG</a>
+                    </li>
+                    <li class="pull-right" style="margin-left:50px;">
+                        <div class="pull-right beta-components space-left ov">
+                            <div class="beta-comp" style="margin-bottom: 10px">
+                                <form role="search" method="get" id="searchform" action="{{ route('search') }}">
+                                    {{--<form role="search" method="get" id="searchform">--}}
+                                    <input type="text" value="" name="search" id="s" placeholder="Nhập từ khóa..."/>
+                                    <button class="fa fa-search" type="submit" id="searchsubmit"></button>
+                                </form>
+                            </div>
+                            <div class="beta-comp">
+                                <a href="{{asset('cart/show')}}">
+                                    <img style="position: relative;" src="assets/dest/images/bag.png">
+                                    @if(Cart::count()>0)
+                                        <span style="position:absolute;text-align: center;left: 1133px;top: 10px">{{Cart::count()}}</span>
+                                    @endif
+                                </a>
+                            </div>
+                        </div>
                     </li>
                 </ul>
                 <div class="clearfix"></div>
@@ -205,9 +226,11 @@
         <div class="row">
             <div class="col-sm-3" style="font-family:monospace;">
 
-                {{--<h4 class="widget-title">VỀ CHÚNG TÔI</h4>--}}
-                <img src="assets/dest/images/logo.png" width="150px">
-                <p style="margin-bottom: 10px; margin-top: 5px">SSSTUTTER - “Thay đổi suy nghĩ của người Việt trẻ về nền
+                <h4 class="widget-title"
+                    style="font-weight:bolder;border-bottom: 1px solid gray;padding-bottom: 5px;font-family: monospace">ABOUT US</h4>
+                {{--<img src="assets/dest/images/logo.png" width="150px">--}}
+                {{--<div class="text-center" style="width: 120px;height: 20px;margin-top:-20px;background: black;font-weight: bold"></div>--}}
+                <p style="margin-bottom: 10px;font-weight: bold"><span style="font-weight: bolder">"Chúng tôi muốn thay đổi suy nghĩ của người Việt trẻ về nền
                     văn hoá ăn mặc :
                     sự tối giản và nhanh gọn
                     không chỉ thể hiện qua quần áo – mà còn từ lối sống để hướng tới nhiều mục tiêu cao cả hơn.“
@@ -247,9 +270,9 @@
                         style="font-family:monospace;border-bottom: 1px solid gray; padding-bottom:5px">LIÊN HỆ</h4>
                     <div>
                         <ul style="color: gray; font-size: 16px">
-                            <li><i class="fa fa-map-marker"></i> Address: 105-D6, Ngõ 4B Đặng Văn Ngữ, Đống Đa, HN</li>
+                            <li><i class="fa fa-map-marker"></i> Address: Số 55, Ngõ 4B Phường Nguyễn Trãi, Hà Đông, HN</li>
                             <li style="padding-top: 5px; padding-bottom: 5px"><i class="fa fa-chevron-right"></i> Email:
-                                ABCD@GMAIL.COM
+                                suhouse@gmail.com
                             </li>
                             <li><i class="fa fa-chevron-right"></i> Phone: 0987654321</li>
 
@@ -287,11 +310,11 @@
                             js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.12';
                             fjs.parentNode.insertBefore(js, fjs);
                         }(document, 'script', 'facebook-jssdk'));</script>
-                    <div class="fb-page" data-href="https://www.facebook.com/ssstuttershop/" data-tabs="timeline"
+                    <div class="fb-page" data-href="https://www.facebook.com/suhousehadong/" data-tabs="timeline"
                          data-width="270" data-height="230" data-small-header="false" data-adapt-container-width="true"
                          data-hide-cover="false" data-show-facepile="true">
-                        <blockquote cite="https://www.facebook.com/ssstuttershop/" class="fb-xfbml-parse-ignore"><a
-                                    href="https://www.facebook.com/ssstuttershop/">SSStutter</a></blockquote>
+                        <blockquote cite="https://www.facebook.com/suhousehadong/" class="fb-xfbml-parse-ignore"><a
+                                    href="https://www.facebook.com/suhousehadong/">SU'S HOUSE</a></blockquote>
                     </div>
                 </div>
             </div>

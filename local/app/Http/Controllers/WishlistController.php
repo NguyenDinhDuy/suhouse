@@ -35,7 +35,7 @@ class WishlistController extends Controller
 
         if (isset($status->user_id) and isset($request->product_id)) {
             return redirect()->back()->with('flash_messaged', 'This item is already in your
-       wishlist!');;
+       wishlist!');
 //
 //        $status = Wishlist::where('user_id', Auth::user()->id)
 //            ->where

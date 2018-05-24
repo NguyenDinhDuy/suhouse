@@ -37,6 +37,21 @@
                                            placeholder="Số điện thoại" name="phone" type="number"
                                            value="{{$data["phone_number"]}}">
                                 </div>
+                                @if(Auth::guard('admin')->user()->id !=$data["id"])
+                                    <div class="form-group">
+                                        <span style="font-weight:bold;margin-right: 240px">Vai trò:</span>
+                                        <input style="margin-top:-50px;margin-left:130px;" required name="level"
+                                               type="radio" value="1"
+                                               @if ($data["level"]==1)
+                                               checked
+                                                @endif>Admin
+                                        <input style="margin-top:-50px;" required name="level"
+                                               type="radio" value="1"
+                                               @if ($data["level"]==2)
+                                               checked
+                                                @endif>Nhân viên
+                                    </div>
+                                @endif
                                 <div>
                                     <div style="margin-right: 160px;margin-top: 20px;margin-bottom: 20px"><input
                                                 type="checkbox" id="checkpass"> Thay đổi mật khẩu

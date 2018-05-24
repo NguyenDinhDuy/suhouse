@@ -164,17 +164,12 @@
             <div class="col-xs-12 col-md=12 col-lg-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        Thống kê doanh thu của cửa hàng SUHOUSE
+                        Thống kê doanh thu các thàng cửa hàng SUHOUSE
                     </div>
 
                     <div class="panel-body">
 
                         @for ($j = 1; $j <= $thismonth; $j++)
-                            {{--{!! ${'totaleachmonth'.$j} /20000!!}--}}
-                            {{--<div style="border:1px solid #ccc;width: 30px;background: red;height:{!! ${'totaleachmonth'.$j}!!}/20000px"> {!! presentPrice(${'totaleachmonth'.$j})!!}--}}
-                            {{--</div>--}}
-
-                            {{--<div id="div.{{$j}}" style="height:{!! ${'totaleachmonth'.$j}!!}/20000px;background: green;color: #fff">a</div>--}}
                             <div style="border-bottom:1px solid #0c0c0c;">
                                 <div id="div{{$j}}"
                                      style="width:{!! ${'totaleachmonth'.$j} /60000!!}px;">

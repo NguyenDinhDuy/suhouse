@@ -11,6 +11,7 @@ use App\User;
 use App\Admin;
 use Auth;
 use App\Order;
+use App\Http\Requests\AddAdminRequest;
 
 class AdminController extends Controller
 {
@@ -100,8 +101,30 @@ class AdminController extends Controller
                 ]);
             $user->password = bcrypt($request->newpassword);
         }
+        $user->level = $request->level;
         $user->phone_number = $request->phone;
         $user->save();
+        return redirect()->intended('admin/list');
+    }
+
+    public function getAdd()
+    {
+        if (Auth::guard('admin')->user()->level == 1) {
+            return view('backend.addadmin');
+        } else {
+            return redirect()->back();
+        }
+    }
+
+    public function postAdd(AddAdminRequest $request)
+    {
+        $admin = new Admin;
+        $admin->email = $request->email;
+        $admin->password = bcrypt($request->password);
+        $admin->name = $request->name;
+        $admin->phone_number = $request->phone;
+        $admin->level = 2;
+        $admin->save();
         return redirect()->intended('admin/list');
     }
 

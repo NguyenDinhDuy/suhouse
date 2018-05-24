@@ -65,6 +65,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/password/reset', 'AuthAdmin\ResetPasswordController@reset');
 
     Route::get('list', 'AdminController@getList');
+    Route::get('add', 'AdminController@getAdd');
+    Route::post('add', 'AdminController@postAdd');
     Route::get('user/list', 'AdminController@getListUser');
     Route::get('edit/{id}', 'AdminController@getEditAdmin');
     Route::post('edit/{id}', 'AdminController@postEditAdmin');
