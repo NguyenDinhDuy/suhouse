@@ -17,8 +17,10 @@
     {{--<link href="assets/dest/css/bootstrap.css" rel="stylesheet">--}}
     <link rel="stylesheet" href="assets/dest/css/animate.css">
     <link rel="stylesheet" title="style" href="assets/dest/css/huong-style.css">
+    <link rel="stylesheet" title="style" href="assets/dest/css/owl.carousel.css">
+    <link rel="stylesheet" title="style" href="assets/dest/css/owl.theme.default.min.css">
     <script src="assets/dest/js/jquery-3.2.1.min.js"></script>
-    {{--<script src="assets/dest/js/jqzoom.js"></script>--}}
+    <script src="assets/dest/js/owl.carousel.js"></script>
     <style>
         body {
             font-family: monospace;
@@ -133,7 +135,8 @@
                         </li>
                         <li><a href="{{asset('profile')}}"><i class="fa fa-user"></i>{{ Auth::user()->name }} </a></li>
                         <li><a href="{{asset('wishlist')}}"><i class="fa fa-heart"></i>Yêu thích</a></li>
-                        <li style="border-right: none"><a href="{{asset('history')}}"><i class="fa fa-book"></i>Lịch sử</a></li>
+                        <li style="border-right: none"><a href="{{asset('history')}}"><i class="fa fa-book"></i>Lịch sử</a>
+                        </li>
 
                     @else
                         <li style="border:none;margin-left: 360px"><a href="{{ route('login') }}"><i
@@ -151,23 +154,23 @@
     <div class="header-body">
         <div class="container beta-relative">
             {{--<div class="pull-right beta-components space-left ov">--}}
-                {{--<div class="beta-comp" style="margin-bottom: 10px">--}}
+            {{--<div class="beta-comp" style="margin-bottom: 10px">--}}
 
-                    {{--<form role="search" method="get" id="searchform" action="{{ route('search') }}">--}}
-                        {{--<form role="search" method="get" id="searchform">--}}
-                        {{--<input type="text" value="" name="search" id="s" placeholder="Nhập từ khóa..."/>--}}
-                        {{--<button class="fa fa-search" type="submit" id="searchsubmit"></button>--}}
-                    {{--</form>--}}
-                {{--</div>--}}
-                {{--<div class="beta-comp">--}}
+            {{--<form role="search" method="get" id="searchform" action="{{ route('search') }}">--}}
+            {{--<form role="search" method="get" id="searchform">--}}
+            {{--<input type="text" value="" name="search" id="s" placeholder="Nhập từ khóa..."/>--}}
+            {{--<button class="fa fa-search" type="submit" id="searchsubmit"></button>--}}
+            {{--</form>--}}
+            {{--</div>--}}
+            {{--<div class="beta-comp">--}}
 
-                    {{--<a href="{{asset('cart/show')}}">--}}
-                        {{--<img style="position: relative;" src="assets/dest/images/bag.png">--}}
-                        {{--@if(Cart::count()>0)--}}
-                            {{--<span style="position:absolute;text-align: center;left: 1133px;top: 10px">{{Cart::count()}}</span>--}}
-                        {{--@endif--}}
-                    {{--</a>--}}
-                {{--</div>--}}
+            {{--<a href="{{asset('cart/show')}}">--}}
+            {{--<img style="position: relative;" src="assets/dest/images/bag.png">--}}
+            {{--@if(Cart::count()>0)--}}
+            {{--<span style="position:absolute;text-align: center;left: 1133px;top: 10px">{{Cart::count()}}</span>--}}
+            {{--@endif--}}
+            {{--</a>--}}
+            {{--</div>--}}
             {{--</div>--}}
             {{--<div class="clearfix"></div>--}}
         </div> <!-- .container -->
@@ -202,11 +205,13 @@
                                     <button class="fa fa-search" type="submit" id="searchsubmit"></button>
                                 </form>
                             </div>
-                            <div class="beta-comp">
+                            <div style="position: relative;text-align: center;" class="beta-comp">
                                 <a href="{{asset('cart/show')}}">
-                                    <img style="position: relative;" src="assets/dest/images/bag.png">
+                                    <img src="assets/dest/images/bag.png">
                                     @if(Cart::count()>0)
-                                        <span style="position:absolute;text-align: center;left: 1133px;top: 10px">{{Cart::count()}}</span>
+                                        <span style="font-weight:bold;color:#E32124;font-size: 13px; position: absolute;top: 70%;left: 50%;transform: translate(-50%, -50%);">
+                                        {{Cart::count()}}
+                                    </span>
                                     @endif
                                 </a>
                             </div>
@@ -227,7 +232,8 @@
             <div class="col-sm-3" style="font-family:monospace;">
 
                 <h4 class="widget-title"
-                    style="font-weight:bolder;border-bottom: 1px solid gray;padding-bottom: 5px;font-family: monospace">ABOUT US</h4>
+                    style="font-weight:bolder;border-bottom: 1px solid gray;padding-bottom: 5px;font-family: monospace">
+                    ABOUT US</h4>
                 {{--<img src="assets/dest/images/logo.png" width="150px">--}}
                 {{--<div class="text-center" style="width: 120px;height: 20px;margin-top:-20px;background: black;font-weight: bold"></div>--}}
                 <p style="margin-bottom: 10px;font-weight: bold"><span style="font-weight: bolder">"Chúng tôi muốn thay đổi suy nghĩ của người Việt trẻ về nền
@@ -270,7 +276,8 @@
                         style="font-family:monospace;border-bottom: 1px solid gray; padding-bottom:5px">LIÊN HỆ</h4>
                     <div>
                         <ul style="color: gray; font-size: 16px">
-                            <li><i class="fa fa-map-marker"></i> Address: Số 55, Ngõ 4B Phường Nguyễn Trãi, Hà Đông, HN</li>
+                            <li><i class="fa fa-map-marker"></i> Address: Số 55, Ngõ 4B Phường Nguyễn Trãi, Hà Đông, HN
+                            </li>
                             <li style="padding-top: 5px; padding-bottom: 5px"><i class="fa fa-chevron-right"></i> Email:
                                 suhouse@gmail.com
                             </li>

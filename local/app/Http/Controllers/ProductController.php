@@ -13,6 +13,7 @@ use App\Product;
 use App\ProdSpecifi;
 use Session;
 use DB;
+use App\Image;
 
 class ProductController extends Controller
 {
@@ -47,7 +48,7 @@ class ProductController extends Controller
         $product->save();
         $request->img->storeAs('avatar', $filename);
 
-
+        //Thêm sản phẩm con
         $child = count($request->color);
         for ($i = 0; $i < $child; $i++) {
 
@@ -62,6 +63,19 @@ class ProductController extends Controller
             $request->imgspe[$i]->storeAs('avatar', $filename);
         }
 
+        //Thêm nhiều ảnh
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $image) {
+                $filenameWithExt = $image->getClientOriginalName();
+                $image->storeAs('avatar', $filenameWithExt);
+
+                $image = new Image;
+                $image->product_id = $product->prod_id;
+                $image->path = $filenameWithExt;
+                $image->save();
+            }
+        }
+
         Session::flash('alert', "Thêm mới thành công");
         return redirect()->intended('admin/product');
 
@@ -73,6 +87,7 @@ class ProductController extends Controller
         $data['catelist'] = Category::all();
         $data['colorlist'] = Color::all();
         $data['sizelist'] = Size::all();
+        $data['images'] = DB::table('images')->where('product_id', $id)->get();
         $data['productspecifi'] = DB::table('prod_specifi')->where('product_id', $id)->get();
         return view('backend.editproduct', $data);
     }
@@ -96,15 +111,27 @@ class ProductController extends Controller
             $request->img->storeAs('avatar', $img);
         }
 
+        //them moi
+//        $numberimg = count($request->image);
+//        dd($numberimg);
+//        for ($j = 0; $j < 4; $j++) {
+//            $imgdetail = new Image;
+//            $arr2['path'] = $request->imgOld[$j];
+//
+//            if ($request->hasFile('image.' . $j)) {
+//                $imgdt = $request->image[$j]->getClientOriginalName();
+//                $arr2['path'] = $imgdt;
+//                $request->image[$j]->storeAs('avatar', $imgdt);
+//            }
+//            $imgdetail->where('product_id', $id)->update($arr2);
+//        }
+
+
+        //sửa sản phẩm con
         $child = count($request->color);
         for ($i = 0; $i < $child; $i++) {
-//            $checkfile = array_dot($request->file());
-//            dd($checkfile);
-//            $img = $request->imageOld[$i];
-//            if (array_has($checkfile, 'imgspe.' . $i)) {
 
             $prodspecifi = new ProdSpecifi;
-
             $arr1['prod_color_id'] = $request->color[$i];
             $arr1['prod_size_id'] = $request->size[$i];
             $arr1['quantity'] = $request->quanti[$i];
@@ -120,6 +147,7 @@ class ProductController extends Controller
                 ->update($arr1);
         }
 
+        // thêm mới sản phẩm con
         $child1 = count($request->color1);
         for ($i = 0; $i < $child1; $i++) {
             $prodspecifi = new ProdSpecifi;
@@ -132,6 +160,7 @@ class ProductController extends Controller
             $prodspecifi->save();
             $request->imgspe1[$i]->storeAs('avatar', $filename);
         }
+
         $product->where('prod_id', $id)->update($arr);
         return redirect('admin/product');
     }

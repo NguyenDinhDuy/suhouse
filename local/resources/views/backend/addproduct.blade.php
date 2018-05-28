@@ -39,9 +39,15 @@
                                         <label>Ảnh sản phẩm</label>
                                         <input required type="file" name="img" class="img form-control hidden"
                                                onchange="changeImg(this)">
-                                        <img class="thumbnail avatar" width="300px"
+                                        <img class="thumbnail avatar" width="120px" height="120px"
                                              src="img/new_seo-10-512.png">
                                     </div>
+
+                                    <div style="border:2px solid #000;padding:10px 2px;" class="form-group">
+                                        <label>Ảnh chi tiết sản phẩm</label>
+                                        <input type="file" name="image[]" multiple="multiple">
+                                    </div>
+
                                     <div class="form-group">
                                         <label>Miêu tả</label>
                                         <textarea class="ckeditor" required name="description"></textarea>

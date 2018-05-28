@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Image;
 use Illuminate\Http\Request;
 use App\Product;
 use Auth;
@@ -97,6 +98,8 @@ class FrontendController extends Controller
             ->get();
 
         $data['item'] = Product::find($id);
+        $data['images'] = DB::table('images')->where('product_id', $id)->get();
+//        dd($data['images']);
 //        $data['title'] = Product::find($id)->prod_name;
         $data['colorlist'] = Color::all();
         $data['sizelist'] = Size::all();

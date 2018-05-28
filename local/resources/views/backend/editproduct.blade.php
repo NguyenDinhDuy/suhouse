@@ -13,7 +13,7 @@
             <div class="col-xs-12 col-md-12 col-lg-12">
 
                 <div class="panel panel-primary">
-                    <div class="panel-heading">Thêm sản phẩm</div>
+                    <div class="panel-heading">Sửa thông tin sản phẩm</div>
                     <div class="panel-body">
                         @include('errors.note')
                         <form method="post" enctype="multipart/form-data">
@@ -43,9 +43,22 @@
                                         <label>Ảnh sản phẩm</label>
                                         <input type="file" name="img" class="img form-control hidden"
                                                onchange="changeImg(this)">
-                                        <img class="avatar thumbnail" width="300px"
+                                        <img class="avatar thumbnail" width="120px" height="120px"
                                              src="{{asset('local/storage/app/avatar/'.$product->prod_thumbnail)}}">
                                     </div>
+
+                                    <div style="border:2px solid #000;padding:10px 2px;" class="form-group">
+                                        <label>Ảnh chi tiết sản phẩm</label>
+
+                                        @foreach($images as $image)
+                                            <input type="file" name="image[]" class="img form-control hidden"
+                                                   onchange="changeImg(this)" multiple="multiple">
+                                            <img class="avatar thumbnail" width="120px" height="120px"
+                                                 src="{{asset('local/storage/app/avatar/'.$image->path)}}">
+                                            <input type="hidden" name="imgOld[]" value="{{$image->path }}">
+                                        @endforeach
+                                    </div>
+
                                     <div class="form-group">
                                         <label>Miêu tả</label>
                                         <textarea class="ckeditor" required

@@ -155,21 +155,23 @@
             padding: 0 8px
         }
 
-        /*.detail-image {*/
-        /*display: grid;*/
+        .detail-image {
+            /*display: grid;*/
         /*grid-template-columns: repeat(4, 1fr);*/
         /*grid-gap: 10px;*/
-        /*margin-top: 25px;*/
-        /*padding-top: 15px;*/
-        /*border-top: 1px solid #ccc;*/
+        /*margin-top: 10px;*/
+        padding-top: 10px;
+        border-top: 1px solid #ccc;
 
-        /*}*/
-        /*.image-thumb {*/
-        /*display: flex;*/
-        /*align-items: center;*/
-        /*border: none;*/
-        /*cursor: pointer;*/
-        /*}*/
+        }
+
+        .image-thumb {
+            /*display: flex;*/
+            /*align-items: center;*/
+            border: 1px solid lightgray;
+            /*cursor: pointer;*/
+        }
+
     </style>
     <div class="container">
         <div class="space20">&nbsp;</div>
@@ -212,32 +214,48 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{--<div class="detail-image">--}}
-                                {{--<div class="image-thumb"><img style="height: 66px" name="thumbnail"--}}
-                                {{--title="Click để xem ảnh lớn hơn" id="thumbnail"--}}
-                                {{--width="360px"--}}
-                                {{--height="540px"--}}
-                                {{--src="{{asset('local/storage/app/avatar/'.$item->prod_thumbnail)}}">--}}
-                                {{--</div>--}}
-                                {{--<div class="image-thumb"><img style="height: 66px" name="thumbnail"--}}
-                                {{--title="Click để xem ảnh lớn hơn" id="thumbnail"--}}
-                                {{--width="360px"--}}
-                                {{--height="540px"--}}
-                                {{--src="{{asset('local/storage/app/avatar/'.$item->prod_thumbnail)}}">--}}
-                                {{--</div>--}}
-                                {{--<div class="image-thumb"><img style="height: 66px" name="thumbnail"--}}
-                                {{--title="Click để xem ảnh lớn hơn" id="thumbnail"--}}
-                                {{--width="360px"--}}
-                                {{--height="540px"--}}
-                                {{--src="{{asset('local/storage/app/avatar/'.$item->prod_thumbnail)}}">--}}
-                                {{--</div>--}}
-                                {{--<div class="image-thumb"><img style="height: 66px" name="thumbnail"--}}
-                                {{--title="Click để xem ảnh lớn hơn" id="thumbnail"--}}
-                                {{--width="360px"--}}
-                                {{--height="540px"--}}
-                                {{--src="{{asset('local/storage/app/avatar/'.$item->prod_thumbnail)}}">--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
+
+
+                                <div class="detail-image owl-carousel owl-theme">
+                                    @foreach($images as $image)
+                                        <div class="image-thumb"><img style="height: 88px" width="100%"
+                                                                      src="{{asset('local/storage/app/avatar/'.$image->path)}}">
+                                            <input id="valimg" type="hidden" value="{{$image->path}}">
+                                        </div>
+                                    @endforeach
+                                </div>
+
+                                <script>
+                                    (function () {
+                                        const currentImage = document.querySelector('#thumbnail');
+                                        const currentLargeImage = document.querySelector('#thumbnaillar');
+                                        const images = document.querySelectorAll('.image-thumb');
+                                        images.forEach((element) => element.addEventListener('click', thumbnailClick));
+
+                                        function thumbnailClick(e) {
+                                            currentImage.src = this.querySelector('img').src;
+                                            currentLargeImage.src = this.querySelector('img').src;
+                                        }
+                                    })();
+
+                                    $('.owl-carousel').owlCarousel({
+                                        // loop:true,
+                                        margin:10,
+                                        nav:true,
+                                        responsive:{
+                                            0:{
+                                                items:1
+                                            },
+                                            600:{
+                                                items:3
+                                            },
+                                            1000:{
+                                                items:4
+                                            }
+                                        }
+                                    })
+                                </script>
+
                             </div>
                             <div class="col-sm-7" style="padding-left: 10px">
                                 <div class="single-item-body" style="color: #484848;">
@@ -412,9 +430,9 @@
                 <div class="row">
 
                     <div class="col-md-10">
-                        <div class="fb-comments" data-href="{{ url("/detail/$item->prod_id/$item->prod_slug.html") }}"
+                        <div class="fb-comments" data-href="{{url("/detail/$item->prod_id/$item->prod_slug.html")}}"
                              data-width="100%" data-numposts="5"></div>
-                        <meta property="fb:429467917501529" content="{429467917501529}"/>
+                        <meta property="fb:app_id" content="{429467917501529}"/>
                         <meta property="fb:admins" content="{100006364260597}"/>
                     </div>
 
@@ -486,6 +504,7 @@
     </div> <!-- .container -->
     <a type="hidden" href="{!!url('quantity')!!}" id="linkquan"></a>
     {{--<a type="hidden" href="{!!url('quantity')!!}" class="btn btn-primary btn-Link"></a>--}}
+
     <script>
         // alert($('[rel="soluong"]').val())
         $(document).ready(function () {
