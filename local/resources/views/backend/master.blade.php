@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/jquery.dataTables.css">
     <link href="css/datepicker3.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    {{--<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.css" rel="stylesheet" type="text/css">--}}
     <script type="text/javascript" src="../../editor/ckeditor/ckeditor.js"></script>
     <script src="js/lumino.glyphs.js"></script>
     <script src="js/jquery-1.11.1.min.js"></script>
@@ -175,6 +176,8 @@
 <script src="js/easypiechart.js"></script>
 <script src="js/easypiechart-data.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js"></script>--}}
+
 <script>
 
     $('#calendar').datepicker({});

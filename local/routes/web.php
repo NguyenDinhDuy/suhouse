@@ -54,6 +54,8 @@ Route::group(['prefix' => 'wishlist'], function () {
 });
 
 Route::group(['prefix' => 'admin'], function () {
+    Route::get('delete/image/{id}','ProductController@deleteImg');
+
     Route::get('/login', 'AuthAdmin\LoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'AuthAdmin\LoginController@login')->name('admin.login.submit');
     Route::get('/', 'AdminController@index')->name('admin.home');

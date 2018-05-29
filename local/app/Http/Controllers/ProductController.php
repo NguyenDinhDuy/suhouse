@@ -112,19 +112,27 @@ class ProductController extends Controller
         }
 
         //them moi
-//        $numberimg = count($request->image);
-//        dd($numberimg);
-//        for ($j = 0; $j < 4; $j++) {
+//        $numberimg = count($request->imagedetail);
+//        for ($j = 0; $j < $numberimg; $j++) {
 //            $imgdetail = new Image;
 //            $arr2['path'] = $request->imgOld[$j];
-//
-//            if ($request->hasFile('image.' . $j)) {
-//                $imgdt = $request->image[$j]->getClientOriginalName();
+//            if ($request->hasFile('imagedetail.' . $j)) {
+//                $imgdt = $request->imagedetail[$j]->getClientOriginalName();
 //                $arr2['path'] = $imgdt;
-//                $request->image[$j]->storeAs('avatar', $imgdt);
+//                $request->imagedetail[$j]->storeAs('avatar', $imgdt);
 //            }
 //            $imgdetail->where('product_id', $id)->update($arr2);
 //        }
+
+        $child2 = count($request->image1);
+        for ($k = 0; $k < $child2; $k++) {
+            $imgdetail = new Image;
+            $filename = $request->image1[$k]->getClientOriginalName();
+            $imgdetail->product_id = $id;
+            $imgdetail->path = $filename;
+            $imgdetail->save();
+            $request->image1[$k]->storeAs('avatar', $filename);
+        }
 
 
         //sửa sản phẩm con
@@ -171,4 +179,9 @@ class ProductController extends Controller
         return back();
     }
 
+    public function deleteImg($id)
+    {
+        Image::find($id)->delete();
+        return back();
+    }
 }

@@ -1,5 +1,24 @@
 @extends('backend.master')
 @section('title','Sửa sản phẩm')
+<style>
+    .detail-image {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        /*grid-gap: 10px;*/
+        /*margin-top: 10px;*/
+        /*padding-top: 10px;*/
+        /*border-top: 1px solid #ccc;*/
+
+    }
+
+    .image-thumb {
+        display: flex;
+        align-items: center;
+        /*border: 1px solid lightgray;*/
+        cursor: pointer;
+    }
+</style>
+
 @section('main')
 
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -18,7 +37,7 @@
                         @include('errors.note')
                         <form method="post" enctype="multipart/form-data">
                             <div class="row" style="margin-bottom:40px">
-                                <div class="col-lg-4">
+                                <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Tên sản phẩm</label>
                                         <input required type="text" name="name" class="form-control"
@@ -47,16 +66,24 @@
                                              src="{{asset('local/storage/app/avatar/'.$product->prod_thumbnail)}}">
                                     </div>
 
-                                    <div style="border:2px solid #000;padding:10px 2px;" class="form-group">
-                                        <label>Ảnh chi tiết sản phẩm</label>
-
+                                    <p style="font-weight: bold">Ảnh chi tiết sản phẩm</p>
+                                    <div style="border:2px solid #c0c0c0;padding:5px 5px;"
+                                         class="detail-image form-group">
                                         @foreach($images as $image)
-                                            <input type="file" name="image[]" class="img form-control hidden"
-                                                   onchange="changeImg(this)" multiple="multiple">
-                                            <img class="avatar thumbnail" width="120px" height="120px"
-                                                 src="{{asset('local/storage/app/avatar/'.$image->path)}}">
-                                            <input type="hidden" name="imgOld[]" value="{{$image->path }}">
+
+                                            <div style="position: relative;text-align: center">
+                                                {{--<input type="file" name="imagedetail[]"--}}
+                                                {{--class="image-thumb form-control hidden"--}}
+                                                {{--onchange="changeImg(this)">--}}
+                                                <img class="avatar thumbnail" width="80px" height="80px"
+                                                     src="{{asset('local/storage/app/avatar/'.$image->path)}}">
+                                                <div style="position: absolute;top: 1%;left: 50%">
+                                                    <a style="color:#8c8c8c" href="{{asset('admin/delete/image/'.$image->id)}}">x</a></div>
+                                            </div>
+                                            <input type="hidden" name="imgOld[]" value="{{$image->path}}">
                                         @endforeach
+
+                                        <input type="file" name="image1[]" class="form-control" multiple="multiple">
                                     </div>
 
                                     <div class="form-group">
@@ -94,7 +121,7 @@
                                     <a href="{{asset('admin/product')}}" class="btn btn-danger">Hủy bỏ</a>
                                 </div>
                                 <input type="hidden" name="proid" value="{{$product->prod_id}}">
-                                <div class="col-lg-8" style="border: 1px solid #666">
+                                <div class="col-lg-6" style="border: 1px solid #666">
                                     <div class="panel-heading">Thuộc tính sản phẩm</div>
                                     <script>
 
@@ -135,13 +162,13 @@
 
                                             var table = document.getElementById("myTable");
                                             table.deleteRow(table.rows.length - 1);
-                                            {{--{{asset('admin/product/search/')}}--}}
-                                            {{--$.get(--}}
-                                            {{--'{{asset('admin/product/search')}}',--}}
-                                            {{--function () {--}}
-                                            {{--location.reload();--}}
-                                            {{--}--}}
-                                            {{--);--}}
+                                            {{asset('admin/product/search/')}}
+                                            $.get(
+                                                '{{asset('admin/product/search')}}',
+                                                function () {
+                                                    location.reload();
+                                                }
+                                            );
                                         }
 
                                     </script>
@@ -152,8 +179,8 @@
                                         <tr class="bg-primary">
                                             <th>Màu</th>
                                             <th>Size</th>
-                                            <th width="40%">Ảnh sản phẩm</th>
-                                            <th width="10%">Số lượng</th>
+                                            <th>Ảnh sản phẩm</th>
+                                            <th>Số lượng</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -189,7 +216,8 @@
                                                 <td>
                                                     <input name="quanti[]" type="number" min="0"
                                                            value="{{$prodspe->quantity}}">
-                                                    {{--<input type="hidden" name="quantiOld[]" value="{{$prodspe->quantity }}">--}}
+                                                    <input type="hidden" name="quantiOld[]"
+                                                           value="{{$prodspe->quantity }}">
                                                 </td>
                                             </tr>
                                         @endforeach

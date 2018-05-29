@@ -209,7 +209,7 @@
                                 <a href="{{asset('cart/show')}}">
                                     <img src="assets/dest/images/bag.png">
                                     @if(Cart::count()>0)
-                                        <span style="font-weight:bold;color:#E32124;font-size: 13px; position: absolute;top: 70%;left: 50%;transform: translate(-50%, -50%);">
+                                        <span style="font-weight:bold;color:#E32124;font-size: 13px; position: absolute;top: 60%;left: 50%;transform: translate(-50%, -50%);">
                                         {{Cart::count()}}
                                     </span>
                                     @endif
