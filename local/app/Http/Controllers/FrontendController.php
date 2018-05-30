@@ -57,8 +57,8 @@ class FrontendController extends Controller
 
     public function getCategory(Request $request, $id)
     {
-        $data['items'] = Product::where('prod_cate', $request->id)->orderby('prod_id', 'desc')->paginate(3);
-        $data['id'] = $id;
+        $data['items'] = Product::where('prod_cate', $id)->orderby('prod_id', 'desc')->paginate(3);
+//        $data['id'] = $id;
         $data['cate'] = Category::find($id);
         return view('frontend.product_type', $data);
     }
@@ -99,7 +99,6 @@ class FrontendController extends Controller
 
         $data['item'] = Product::find($id);
         $data['images'] = DB::table('images')->where('product_id', $id)->get();
-//        dd($data['images']);
 //        $data['title'] = Product::find($id)->prod_name;
         $data['colorlist'] = Color::all();
         $data['sizelist'] = Size::all();
@@ -112,26 +111,6 @@ class FrontendController extends Controller
         $data['code'] = $id;
         return view('frontend.success', $data);
     }
-
-//    public function getCode($code)
-//    {
-//        foreach (Order::all() as $order) {
-//            if ($code == $order->bill_code) {
-//                if ($order->status == 0) {
-//                    $data['status'] = 0;
-//                } elseif ($order->status == 1) {
-//                    $data['status'] = 1;
-//                } elseif ($order->status == 2) {
-//                    $data['status'] = 2;
-//                } elseif ($order->status == 3) {
-//                    $data['status'] = 3;
-//                }
-//            } else {
-//                $data['status'] = 4;
-//            }
-//        }
-//        return view($data);
-//    }
 
     public function history()
     {
@@ -160,10 +139,22 @@ class FrontendController extends Controller
 
     public function searchBill(Request $request)
     {
-//        dd($request->code);
+
         $data = DB::table('orders')->where('bill_code', $request->code)->get();
 
-//        dd(gettype($data));
         return ($data);
+    }
+
+    public function sortAsc($id)
+    {
+        $data['items'] = Product::where('prod_cate', $id)->orderby('promotion_price', 'asc')->paginate(3);
+        $data['cate'] = Category::find($id);
+        return view('frontend.product_type', $data);
+    }
+    public function sortDesc($id)
+    {
+        $data['items'] = Product::where('prod_cate', $id)->orderby('promotion_price', 'desc')->paginate(3);
+        $data['cate'] = Category::find($id);
+        return view('frontend.product_type', $data);
     }
 }

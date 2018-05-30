@@ -34,7 +34,7 @@
                                         type="email" id="email" required value="{{old('email')}}">
                                 @if ($errors->has('email'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong style="color: #E32124">{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -47,7 +47,7 @@
                                    required>
                             @if ($errors->has('password'))
                                 <span class="help-block">
-                            <strong>{{ $errors->first('password') }}</strong>
+                            <strong style="color: #E32124">{{ $errors->first('password') }}</strong>
                             </span>
                             @endif
                         </div>

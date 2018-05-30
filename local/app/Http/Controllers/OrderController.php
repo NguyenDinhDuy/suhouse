@@ -57,4 +57,11 @@ class OrderController extends Controller
         Order::destroy($id);
         return redirect()->back()->with('success', 'Đơn hàng đã được xóa thành công');
     }
+
+    public function filter($id)
+    {
+        $data['orders'] = Order::where('status', $id)->orderby('id', 'desc')->paginate(5);
+//        dd($data['orders']);
+        return view('backend.orderlist', $data);
+    }
 }

@@ -13,9 +13,8 @@
 
 Route::get('/', 'FrontendController@getHome');
 Auth::routes();
-Route::get('test', function () {
-    return view('frontend.history');
-});
+//Route::get('test', 'OrderController@filter');
+
 //Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -28,6 +27,9 @@ Route::get('detail/{id}/{slug}.html', 'FrontendController@getDetailProduct');
 Route::get('quantity/{id}/{color}/{size}', 'FrontendController@getQuanProduct');
 Route::get('history', 'FrontendController@history');
 Route::get('detailorder/{id}', 'FrontendController@detailorder');
+
+Route::get('cate/sortasc/{id}/{slug}.html', 'FrontendController@sortAsc');
+Route::get('cate/sortdesc/{id}/{slug}.html', 'FrontendController@sortDesc');
 
 Route::get('myform', 'CartController@pay');
 Route::post('select-ajax', ['as' => 'select-ajax', 'uses' => 'CartController@selectAjax']);
@@ -54,7 +56,7 @@ Route::group(['prefix' => 'wishlist'], function () {
 });
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('delete/image/{id}','ProductController@deleteImg');
+    Route::get('delete/image/{id}', 'ProductController@deleteImg');
 
     Route::get('/login', 'AuthAdmin\LoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'AuthAdmin\LoginController@login')->name('admin.login.submit');
@@ -83,6 +85,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('edit/{id}', 'CategoryController@postEditCate');
         Route::get('delete/{id}', 'CategoryController@getDeleteCate');
     });
+
+    Route::group(['prefix' => 'coupon'], function () {
+        Route::get('/', 'AdminCouponController@getCoupon');
+        Route::post('/', 'AdminCouponController@postCoupon');
+        Route::get('delete/{id}', 'AdminCouponController@getDeleteCoupon');
+    });
+
     Route::group(['prefix' => 'size'], function () {
         Route::get('/', 'SizeController@getSize');
         Route::post('/', 'SizeController@postSize');
@@ -107,8 +116,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('edit/{id}', 'ProductController@postEditProduct');
 ////            Route::get('detail/{id}', 'ProductController@getDetailProduct');
         Route::get('delete/{id}', 'ProductController@getDeleteProduct');
-////            Route::get('search', 'ProductController@search');
-//        Route::get('test', 'ProductController@test');
+        Route::get('category/{id}/{slug}.html', 'ProductController@filter');
+
     });
 
     Route::group(['prefix' => 'order'], function () {
@@ -116,6 +125,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('delete/{id}', 'OrderController@destroy')->name('del-order');
         Route::get('edit/{id}', 'OrderController@edit')->name('edit-order');
         Route::post('edit/{id}', 'OrderController@update');
+        Route::get('status/{id}', 'OrderController@filter');
     });
 
     Route::group(['prefix' => 'thongke'], function () {

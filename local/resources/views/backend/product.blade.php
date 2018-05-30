@@ -1,6 +1,5 @@
 @extends('backend.master')
 @section('title','Danh sách sản phẩm')
-
 @section('main')
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
         <div class="row">
@@ -18,6 +17,21 @@
                         <div class="bootstrap-table">
                             <div class="table-responsive">
                                 <a href="{{asset('admin/product/add')}}" class="btn btn-primary">Thêm sản phẩm</a>
+
+
+                                <select class="pull-right" onchange="location = this.value;"
+                                        style="border-color: #737373; border-radius:4px;width: 120px;height:25px;font-weight: bold;color: #666">
+                                    <option style="font-family:Arial;font-weight:bold;color: #666">Mặc định</option>
+
+                                    @foreach($catelist as $cate)
+                                        <option value="{{asset('admin/product/category/'.$cate->cate_id.'/'.$cate->cate_slug.'.html')}}"
+                                                style="font-family: Arial;color: #666">
+                                            {{$cate->cate_name}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <span class="pull-right" style="font-family:Arial;color: #666">Sắp xếp theo: </span>
+
                                 <table id="prodlist" class="table table-hover table-bordered" style="margin-top:20px;">
                                     <thead>
                                     <tr class="bg-primary">
@@ -40,7 +54,13 @@
                                                      src="{{asset('local/storage/app/avatar/'.$product->prod_thumbnail)}}"
                                                      class="thumbnail">
                                             </td>
-                                            <td>{{$product->cate_name}}</td>
+                                            <td>
+                                                @foreach($catelist as $cate)
+                                                    @if($product->prod_cate==$cate->cate_id)
+                                                        {{$cate->cate_name}}
+                                                    @endif
+                                                @endforeach
+                                            </td>
                                             <td>
                                                 <a href="{{asset('admin/product/edit/'.$product->prod_id)}}"
                                                    class="btn btn-warning"><i class="fa fa-pencil"

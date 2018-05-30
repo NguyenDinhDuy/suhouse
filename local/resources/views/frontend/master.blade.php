@@ -18,9 +18,11 @@
     <link rel="stylesheet" href="assets/dest/css/animate.css">
     <link rel="stylesheet" title="style" href="assets/dest/css/huong-style.css">
     <link rel="stylesheet" title="style" href="assets/dest/css/owl.carousel.css">
+    {{--<link rel="stylesheet" title="style" href="assets/dest/css/cloudzoom.css">--}}
     <link rel="stylesheet" title="style" href="assets/dest/css/owl.theme.default.min.css">
     <script src="assets/dest/js/jquery-3.2.1.min.js"></script>
     <script src="assets/dest/js/owl.carousel.js"></script>
+    {{--<script src="assets/dest/js/cloudzoom.js"></script>--}}
     <style>
         body {
             font-family: monospace;

@@ -1,20 +1,18 @@
 @extends('frontend.master')
 @section('title',$cate->cate_name)
-{{--dd($title)--}}
 @section('main')
     {{--<script type="text/javascript">--}}
-    {{--function sort(value) {--}}
-    {{--$.ajax({--}}
-    {{--type: 'get',--}}
-    {{--url: '{!!URL::to('cate/update') !!}',--}}
-    {{--data: {'sort': value, 'id': {{ $id }},{{csrf_token()}} },--}}
-    {{--}).done(function (data) {--}}
-    {{--$('body').html(data)--}}
-    {{--// div.find('.beta-products-list').html(data)--}}
-    {{--}).fail(function (data) {--}}
-    {{--console.log(data);--}}
-    {{--});--}}
-    {{--}--}}{{--</script>--}}
+        {{--function sort(value) {--}}
+            {{--$.ajax({--}}
+                {{--type: 'get',--}}
+                {{--url: '{{url('cate/sort') }}',--}}
+                {{--data: {value: value, id: {{$cate->cate_id}}},--}}
+            {{--}).done(function (data) {--}}
+                {{--$('body').html(data)--}}
+            {{--}).fail(function (data) {--}}
+                {{--console.log(data);--}}
+            {{--});--}}
+        {{--}--}}
 
     {{--</script>--}}
 
@@ -39,7 +37,8 @@
                                         </li>
                                         @foreach($catelist as $cate)
                                             <li style="padding-left:20px;font-weight: 600; font-size: 14px; padding-top: 25px; padding-bottom: 25px;border-bottom: 1px solid #eee">
-                                                <a style="text-transform: uppercase" href="{{asset('category/'.$cate->cate_id.'/'.$cate->cate_slug.'.html')}}">{{$cate->cate_name}}</a>
+                                                <a style="text-transform: uppercase"
+                                                   href="{{asset('category/'.$cate->cate_id.'/'.$cate->cate_slug.'.html')}}">{{$cate->cate_name}}</a>
                                             </li>
                                         @endforeach
                                     </ul>
@@ -48,96 +47,87 @@
                         </div>
                     </div>
                     <div class="col-sm-9">
-                        {{--<div style="padding-bottom: 20px">--}}
-                        {{--<span style="font-family:Arial;color: #666">Sắp xếp theo: </span>--}}
-                        {{--<select name="sort" onchange="window.location.href=this.value"--}}
-                        {{--style="border-color: #737373; border-radius:4px;width: 120px;height:25px;font-weight: bold;color: #666">--}}
-                        {{--<option--}}
-                        {{--value="{{asset('category/'.$cate->cate_id.'/'.$cate->cate_slug.'.html')}}"--}}
-                        {{--style="font-weight: bold;color: #666" >Mới cập nhật--}}
-                        {{--</option>--}}
-                        {{--<option--}}
-                        {{--value="{{asset('category/'.$cate->cate_id.'/'.$cate->cate_slug.'.html?show=Asc')}}"--}}
-                        {{--style="font-weight: bold;color: #666" >Giá tăng--}}
-                        {{--dần--}}
-                        {{--</option>--}}
-                        {{--<option--}}
-                        {{--value="{{asset('category/'.$cate->cate_id.'/'.$cate->cate_slug.'.html?show=Desc')}}"--}}
-                        {{--style="font-weight: bold;color: #666" >Giá giảm--}}
-                        {{--dần--}}
-                        {{--</option>--}}
-                        {{--</select>--}}
+                        <div style="padding-bottom: 20px">
+                            <span style="font-family:Arial;color: #666">Sắp xếp theo: </span>
 
-                        {{--<select name="sort" onchange="sort(this.value)"--}}
-                        {{--style="border-color: #737373; border-radius:4px;width: 120px;height:25px;font-weight: bold;color: #666">--}}
-                        {{--<option--}}
-                        {{--value="0"--}}
-                        {{--style="font-weight: bold;color: #666" >Mới cập nhật--}}
-                        {{--</option>--}}
-                        {{--<option--}}
-                        {{--value="1"--}}
-                        {{--style="font-weight: bold;color: #666" >Giá tăng--}}
-                        {{--dần--}}
-                        {{--</option>--}}
-                        {{--<option--}}
-                        {{--value="2"--}}
-                        {{--style="font-weight: bold;color: #666" >Giá giảm--}}
-                        {{--dần--}}
-                        {{--</option>--}}
-                        {{--</select>--}}
-                        {{--</div>--}}
-                        {{----}}
+                            <select name="sort" onchange="location = this.value;"
+                                    style="border-color: #737373; border-radius:4px;width: 120px;height:25px;font-weight: bold;color: #666">
+                                <option style="font-family:Arial;font-weight:bold;color: #666">Mặc định</option>
+                                <option
+                                        value="{{asset('category/'.$cate->cate_id.'/'.$cate->cate_slug.'.html')}}"
+                                        style="font-family: Arial;color: #666">Mới cập nhật
+                                </option>
+                                <option
+                                        value="{{asset('cate/sortasc/'.$cate->cate_id.'/'.$cate->cate_slug.'.html')}}"
+                                        style="font-family: Arial;color: #666">Giá tăng
+                                    dần
+                                </option>
+                                <option
+                                        value="{{asset('cate/sortdesc/'.$cate->cate_id.'/'.$cate->cate_slug.'.html')}}"
+                                        style="font-family: Arial;color: #666">Giá giảm
+                                    dần
+                                </option>
+                            </select>
+                        </div>
+
                         <div class="beta-products-list">
                             <div class="row">
-                                @foreach($items as $item)
-                                    @if($item->prod_price-$item->promotion_price >0)
-                                        <div class="col-sm-4" style="margin-bottom: 20px">
-                                            <div class="single-item">
-                                                <div class="ribbon-wrapper">
-                                                    <div class="ribbon sale">Sale</div>
-                                                </div>
-                                                <div class="single-item-header">
-                                                    <a href="{{asset('detail/'.$item->prod_id.'/'.$item->prod_slug.'.html')}}"><img
-                                                                src="{{asset('local/storage/app/avatar/'.$item->prod_thumbnail)}}"
-                                                        ></a>
-                                                </div>
-                                                <div class="single-item-body">
-                                                    <div style="height: 50px">
-                                                        <a href="{{asset('detail/'.$item->prod_id.'/'.$item->prod_slug.'.html')}}">{{$item->prod_name}}</a>
+                                @if(count($items)==0)
+                                    <div class="text-center" style="font-family:Arial;font-weight:bold;color: brown">
+                                        Không có kết quả nào
+                                        phù hợp với yêu cầu !
+                                    </div>
+                                @else
+                                    @foreach($items as $item)
+                                        @if($item->prod_price-$item->promotion_price >0)
+                                            <div class="col-sm-4" style="margin-bottom: 20px">
+                                                <div class="single-item">
+                                                    <div class="ribbon-wrapper">
+                                                        <div class="ribbon sale">Sale</div>
                                                     </div>
-                                                    <p class="single-item-price" style="margin-top: 15px">
+                                                    <div class="single-item-header">
+                                                        <a href="{{asset('detail/'.$item->prod_id.'/'.$item->prod_slug.'.html')}}"><img
+                                                                    src="{{asset('local/storage/app/avatar/'.$item->prod_thumbnail)}}"
+                                                            ></a>
+                                                    </div>
+                                                    <div class="single-item-body">
+                                                        <div style="height: 50px">
+                                                            <a href="{{asset('detail/'.$item->prod_id.'/'.$item->prod_slug.'.html')}}">{{$item->prod_name}}</a>
+                                                        </div>
+                                                        <p class="single-item-price" style="margin-top: 15px">
                                                     <span class="flash-del"
                                                           style="font-size: 16px;color: #484848; font-family: Arial; font-weight: bold">{{presentPrice($item->prod_price)}}
                                                         VNĐ</span>
-                                                        <span class="flash-sale"
-                                                              style="font-size: 16px;color: red; font-family: Arial; font-weight: bold">{{presentPrice($item->promotion_price)}}
-                                                            VNĐ</span>
-                                                    </p>
+                                                            <span class="flash-sale"
+                                                                  style="font-size: 16px;color: red; font-family: Arial; font-weight: bold">{{presentPrice($item->promotion_price)}}
+                                                                VNĐ</span>
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    @else
-                                        <div class="col-sm-4" style="margin-bottom: 20px">
-                                            <div class="single-item">
-                                                <div class="single-item-header">
-                                                    <a href="{{asset('detail/'.$item->prod_id.'/'.$item->prod_slug.'.html')}}"><img
-                                                                src="{{asset('local/storage/app/avatar/'.$item->prod_thumbnail)}}"
-                                                        ></a>
-                                                </div>
-                                                <div class="single-item-body">
-                                                    <div style="height: 50px;">
-                                                        {{--ÁO NỈ HOODIE DÀI TAY NAM VIỀN ỐNG TAY PHỐI KHÓA CÀI IN GRAPHIC AFRICA IS ON THE RISE. TREND ĐEN--}}
-                                                        <a href="{{asset('detail/'.$item->prod_id.'/'.$item->prod_slug.'.html')}}">{{$item->prod_name}}</a>
+                                        @else
+                                            <div class="col-sm-4" style="margin-bottom: 20px">
+                                                <div class="single-item">
+                                                    <div class="single-item-header">
+                                                        <a href="{{asset('detail/'.$item->prod_id.'/'.$item->prod_slug.'.html')}}"><img
+                                                                    src="{{asset('local/storage/app/avatar/'.$item->prod_thumbnail)}}"
+                                                            ></a>
                                                     </div>
-                                                    <p class="single-item-price" style="margin-top: 15px;">
+                                                    <div class="single-item-body">
+                                                        <div style="height: 50px;">
+                                                            {{--ÁO NỈ HOODIE DÀI TAY NAM VIỀN ỐNG TAY PHỐI KHÓA CÀI IN GRAPHIC AFRICA IS ON THE RISE. TREND ĐEN--}}
+                                                            <a href="{{asset('detail/'.$item->prod_id.'/'.$item->prod_slug.'.html')}}">{{$item->prod_name}}</a>
+                                                        </div>
+                                                        <p class="single-item-price" style="margin-top: 15px;">
                                                     <span style="font-size: 16px;color: red; font-family: Arial; font-weight: bold">{{presentPrice($item->promotion_price)}}
                                                         VNĐ</span>
-                                                    </p>
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    @endif
-                                @endforeach
+                                        @endif
+                                    @endforeach
+                                @endif
                             </div>
                         </div> <!-- .beta-products-list -->
                         <div class="row text-center">

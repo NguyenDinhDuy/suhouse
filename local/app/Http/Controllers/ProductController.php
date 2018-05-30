@@ -19,8 +19,9 @@ class ProductController extends Controller
 {
     public function getProduct()
     {
-        $data['productlist'] = DB::table('products')->
-        join('categories', 'products.prod_cate', '=', 'categories.cate_id')->orderby('prod_id', 'desc')->paginate(5);
+//        $data['productlist'] = DB::table('products')->
+//        join('categories', 'products.prod_cate', '=', 'categories.cate_id')->orderby('prod_id', 'desc')->paginate(5);
+        $data['productlist'] = DB::table('products')->orderby('prod_id', 'desc')->paginate(5);
         return view('backend.product', $data);
     }
 
@@ -183,5 +184,12 @@ class ProductController extends Controller
     {
         Image::find($id)->delete();
         return back();
+    }
+
+    public function filter($id)
+    {
+        $data['productlist'] = Product::where('prod_cate', $id)->orderby('prod_id', 'desc')->paginate(5);
+        return view('backend.product', $data);
+
     }
 }

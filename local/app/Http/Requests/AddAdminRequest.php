@@ -25,7 +25,7 @@ class AddAdminRequest extends FormRequest
     {
         return [
             'email' => 'unique:admins,email',
-            'password' => 'min:5|max:20',
+            'password' => 'required|min:5|max:20',
             'repassword' => 'same:password'
         ];
     }
@@ -35,6 +35,7 @@ class AddAdminRequest extends FormRequest
         return [
             //
             'email.unique' => 'Email này đã tồn tại',
+            'password.required' => 'Bạn phải điền mật khẩu',
             'password.min' => 'Mật khẩu phải có ít nhất 5 kí tự',
             'password.max' => 'Mật khẩu phải có nhiều nhất 20 kí tự',
             'repassword.same'=>'Mật khẩu xác nhận không trùng khớp'

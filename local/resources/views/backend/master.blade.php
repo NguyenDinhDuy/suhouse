@@ -118,6 +118,13 @@
                 </svg>
                 Size Sản Phẩm</a></li>
         <li>
+        <li>
+            <a href="{{asset('admin/coupon')}}">
+                <svg class="glyph stroked tag">
+                    <use xlink:href="#stroked-tag"/>
+                </svg>
+                Mã giảm giá</a></li>
+        <li>
             <a href="{{asset('admin/order')}}">
                 <svg class="glyph stroked bag">
                     <use xlink:href="#stroked-bag"/>

@@ -157,11 +157,11 @@
 
         .detail-image {
             /*display: grid;*/
-        /*grid-template-columns: repeat(4, 1fr);*/
-        /*grid-gap: 10px;*/
-        /*margin-top: 10px;*/
-        padding-top: 10px;
-        border-top: 1px solid #ccc;
+            /*grid-template-columns: repeat(4, 1fr);*/
+            /*grid-gap: 10px;*/
+            /*margin-top: 10px;*/
+            padding-top: 10px;
+            border-top: 1px solid #ccc;
 
         }
 
@@ -197,8 +197,8 @@
                                 <button type="button"
                                         style="border: none; background: none;color: #007bff;font-weight: bold"
                                         data-toggle="modal" data-target="#exampleModalCenter1">
-                                    <img name="thumbnail" title="Click để xem ảnh lớn hơn" id="thumbnail" width="360px"
-                                         height="540px">
+                                    <img name="thumbnail" title="Click để xem ảnh lớn hơn"
+                                         id="thumbnail" width="360px" height="540px"/>
                                     {{--src="{{asset('local/storage/app/avatar/'.$item->prod_thumbnail)}}">--}}
                                 </button>
                                 <!-- Modal -->
@@ -240,17 +240,17 @@
 
                                     $('.owl-carousel').owlCarousel({
                                         // loop:true,
-                                        margin:10,
-                                        nav:true,
-                                        responsive:{
-                                            0:{
-                                                items:1
+                                        margin: 10,
+                                        nav: true,
+                                        responsive: {
+                                            0: {
+                                                items: 1
                                             },
-                                            600:{
-                                                items:3
+                                            600: {
+                                                items: 3
                                             },
-                                            1000:{
-                                                items:4
+                                            1000: {
+                                                items: 4
                                             }
                                         }
                                     })

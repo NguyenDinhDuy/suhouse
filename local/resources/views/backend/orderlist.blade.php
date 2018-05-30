@@ -16,6 +16,30 @@
                     <div class="panel-body">
                         <div class="bootstrap-table">
                             <div class="table-responsive">
+
+                                <span style="font-family:Arial;color: #666">Sắp xếp theo: </span>
+                                <select onchange="location = this.value;"
+                                        style="border-color: #737373; border-radius:4px;width: 120px;height:25px;font-weight: bold;color: #666">
+                                    <option style="font-family:Arial;font-weight:bold;color: #666">Mặc định</option>
+
+                                    @for($i=0;$i<=3;$i++)
+                                        <option
+                                                value="{{asset('admin/order/status/'.$i)}}"
+                                                style="font-family: Arial;color: #666;margin: 4px">
+                                            @if($i==0)
+                                                Chưa kiểm tra
+                                            @elseif($i==1)
+                                                Đang vận chuyển
+                                            @elseif($i==2)
+                                                Giao hàng thành công
+                                            @else
+                                                Giao hàng thất bại
+                                            @endif
+                                        </option>
+                                    @endfor
+                                </select>
+
+
                                 <table id="prodlist" class="table table-hover table-bordered" style="margin-top:20px;">
                                     <thead>
                                     <tr class="bg-primary">

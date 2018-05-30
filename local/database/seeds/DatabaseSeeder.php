@@ -11,6 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $this->call(XasTableSeeder::class);
+         $this->call(NewDistrictTableSeeder::class);
     }
 }
