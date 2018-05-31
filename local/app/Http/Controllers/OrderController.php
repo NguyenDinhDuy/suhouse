@@ -7,7 +7,7 @@ use App\Order;
 use App\Color;
 use App\Size;
 use DB;
-
+use Carbon\Carbon;
 class OrderController extends Controller
 {
     public function index()
@@ -61,7 +61,21 @@ class OrderController extends Controller
     public function filter($id)
     {
         $data['orders'] = Order::where('status', $id)->orderby('id', 'desc')->paginate(5);
-//        dd($data['orders']);
+        return view('backend.orderlist', $data);
+    }
+
+    public function searchorder(Request $request)
+    {
+        $value = $request->search;
+        $value = str_replace(' ', '%', $value);
+        $data['orders'] = DB::table('orders')->where('bill_code', 'like', '%' . $value . '%')
+            ->orWhere('bill_name', 'like', '%' . $value . '%')
+            ->orWhere('bill_email', 'like', '%' . $value . '%')
+            ->orWhere('bill_phone', 'like', '%' . $value . '%')
+            ->orWhere('address', 'like', '%' . $value . '%')
+            ->orWhereDate('created_at', 'like', '%' . $value . '%')
+            ->orderBy('id', 'desc')->paginate(5);
+
         return view('backend.orderlist', $data);
     }
 }

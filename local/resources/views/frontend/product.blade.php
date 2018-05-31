@@ -173,6 +173,7 @@
         }
 
     </style>
+    @include('errors.message')
     <div class="container">
         <div class="space20">&nbsp;</div>
         <div>
@@ -428,14 +429,11 @@
 
             <div>
                 <div class="row">
-
                     <div class="col-md-10">
                         <div class="fb-comments" data-href="{{url("/detail/$item->prod_id/$item->prod_slug.html")}}"
                              data-width="100%" data-numposts="5"></div>
-                        <meta property="fb:app_id" content="{429467917501529}"/>
-                        <meta property="fb:admins" content="{100006364260597}"/>
+                        {{--data-href="{{url('/detail/'.$item->prod_id.'/'.$item->prod_slug.'html')}}"--}}
                     </div>
-
                 </div>
             </div>
 

@@ -13,7 +13,7 @@
 
 Route::get('/', 'FrontendController@getHome');
 Auth::routes();
-//Route::get('test', 'OrderController@filter');
+//Route::get('test', 'OrderController@searchorder');
 
 //Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
@@ -25,7 +25,7 @@ Route::get('category/{id}/{slug}.html', 'FrontendController@getCategory');
 Route::get('tim-kiem.html', 'FrontendController@search')->name('search');
 Route::get('detail/{id}/{slug}.html', 'FrontendController@getDetailProduct');
 Route::get('quantity/{id}/{color}/{size}', 'FrontendController@getQuanProduct');
-Route::get('history', 'FrontendController@history');
+Route::get('history', 'FrontendController@history')->middleware('auth');
 Route::get('detailorder/{id}', 'FrontendController@detailorder');
 
 Route::get('cate/sortasc/{id}/{slug}.html', 'FrontendController@sortAsc');
@@ -117,6 +117,7 @@ Route::group(['prefix' => 'admin'], function () {
 ////            Route::get('detail/{id}', 'ProductController@getDetailProduct');
         Route::get('delete/{id}', 'ProductController@getDeleteProduct');
         Route::get('category/{id}/{slug}.html', 'ProductController@filter');
+        Route::get('searchprod', 'ProductController@searchprod')->name('searchprod');
 
     });
 
@@ -126,6 +127,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('edit/{id}', 'OrderController@edit')->name('edit-order');
         Route::post('edit/{id}', 'OrderController@update');
         Route::get('status/{id}', 'OrderController@filter');
+        Route::get('searchorder', 'OrderController@searchorder')->name('searchorder');
     });
 
     Route::group(['prefix' => 'thongke'], function () {

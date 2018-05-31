@@ -1,6 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html xmlns:fb="http://ogp.me/ns/fb#" lang="en">
 <head>
+    <meta property="fb:app_id" content="429467917501529"/>
+    <meta property="fb:admins" content="100006364260597"/>
+
     <meta charset="UTF-8">
     <base href="{{asset('public/layout/frontend')}}/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -86,10 +89,19 @@
         a:hover {
             background: none;
         }
-
     </style>
 </head>
 <body>
+
+<div id="fb-root"></div>
+<script>(function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.0&appId=429467917501529';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
 <script lang="javascript">(function () {
         var pname = ((document.title != '') ? document.title : ((document.querySelector('h1') != null) ? document.querySelector('h1').innerHTML : ''));
@@ -100,17 +112,6 @@
         var s = document.getElementsByTagName('script');
         s[0].parentNode.insertBefore(ga, s[0]);
     })();</script>
-
-<div id="fb-root"></div>
-<script>(function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.0&appId=429467917501529&autoLogAppEvents=1';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-
 
 <div id="header">
     <div class="header-top">

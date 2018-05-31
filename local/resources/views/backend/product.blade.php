@@ -18,8 +18,16 @@
                             <div class="table-responsive">
                                 <a href="{{asset('admin/product/add')}}" class="btn btn-primary">Thêm sản phẩm</a>
 
+                                <div class="pull-right" style="margin-bottom: 10px">
+                                    <form role="search" method="get" id="searchform" action="{{ route('searchprod') }}">
+                                        <input type="text" value="" name="search" id="s" placeholder="Nhập từ khóa..."/>
+                                        <button  type="submit" id="searchsubmit">Search
+                                        </button>
+                                    </form>
+                                </div>
 
-                                <select class="pull-right" onchange="location = this.value;"
+                                <span style="font-family:Arial;color: #666">Sắp xếp theo: </span>
+                                <select onchange="location = this.value;"
                                         style="border-color: #737373; border-radius:4px;width: 120px;height:25px;font-weight: bold;color: #666">
                                     <option style="font-family:Arial;font-weight:bold;color: #666">Mặc định</option>
 
@@ -30,7 +38,6 @@
                                         </option>
                                     @endforeach
                                 </select>
-                                <span class="pull-right" style="font-family:Arial;color: #666">Sắp xếp theo: </span>
 
                                 <table id="prodlist" class="table table-hover table-bordered" style="margin-top:20px;">
                                     <thead>

@@ -6,18 +6,18 @@
         <div class="row">
             <div class="col-xs-9 col-md-9 col-lg-9">
                 <div class="widget-box">
-                    <div class="widget-title"><span class="icon"><i class="icon-th"></i></span>
-                        <h5 style="background-color: #ccc;padding: 15px 10px;font-weight: bold">Chi tiết đơn hàng</h5>
-                    </div>
+                    {{--<div class="widget-title">--}}
+                        {{--<span style="background-color: #f1f4f7;padding:5px 5px;font-weight: bold">Chi tiết đơn hàng</span>--}}
+                    {{--</div>--}}
                     <div class="widget-content nopadding">
                         <table class="table table-bordered">
                             <thead class="thead-inverse">
                             <tr>
-                                <th style="background: #ccc;font-size: 12px;font-weight: bold">Mã đơn hàng</th>
-                                <th style="background: #ccc;font-size: 12px;font-weight: bold">Tên khách hàng</th>
-                                <th style="background: #ccc;font-size: 12px;font-weight: bold">Địa chỉ</th>
-                                <th style="background: #ccc;font-size: 12px;font-weight: bold">Email</th>
-                                <th style="background: #ccc;font-size: 12px;font-weight: bold">Số điện thoại</th>
+                                <th style="background: #efefef;font-size: 12px;font-weight: bold">Mã đơn hàng</th>
+                                <th style="background: #efefef;font-size: 12px;font-weight: bold">Tên khách hàng</th>
+                                <th style="background: #efefef;font-size: 12px;font-weight: bold">Địa chỉ</th>
+                                <th style="background: #efefef;font-size: 12px;font-weight: bold">Email</th>
+                                <th style="background: #efefef;font-size: 12px;font-weight: bold">Số điện thoại</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -33,11 +33,12 @@
                         <table class="table table-bordered">
                             <thead class="thead-inverse">
                             <tr>
-                                <th style="background: #ccc;font-size: 12px;font-weight: bold">Hình ảnh</th>
-                                <th style="background: #ccc;font-size: 12px;font-weight: bold">Thông tin</th>
-                                <th style="background: #ccc;font-size: 12px;font-weight: bold">Số lượng</th>
-                                <th style="background: #ccc;font-size: 12px;font-weight: bold">Giá</th>
-                                <th style="background: #ccc;font-size: 12px;font-weight: bold">Thành tiền</th>
+                                <th style="background: #efefef;font-size: 12px;font-weight: bold">Hình ảnh</th>
+                                <th style="background: #efefef;font-size: 12px;font-weight: bold">Thông tin</th>
+                                <th style="background: #efefef;font-size: 12px;font-weight: bold">Số lượng</th>
+                                <th width="12%" style="background: #efefef;font-size: 12px;font-weight: bold">Giá</th>
+                                <th width="15%" style="background: #efefef;font-size: 12px;font-weight: bold">Thành tiền
+                                </th>
                             </tr>
                             </thead>
 
@@ -108,13 +109,13 @@
             <div class="col-xs-3 col-md-3 col-lg-3">
                 <div class="widget-box">
                     <div class="widget-title"><span class="icon"><i class="icon-th"></i></span>
-                        <h5 style="background-color: #ccc;padding: 15px 10px;font-weight: bold">Thay đổi trạng thái</h5>
+                        <h5 style="background-color: #efefef;padding: 15px 10px;font-weight: bold">Thay đổi trạng thái</h5>
                     </div>
-                    <div style="border: 1px solid #555;padding: 15px" class="widget-content nopadding">
+                    <div style="background:#ccc;border: 1px solid #000;padding: 15px" class="widget-content nopadding">
                         <form action="" method="post" class="form-horizontal">
                             <div class="control-group">
                                 <div class="controls" style="margin: 15px">
-                                    <select style="height: 30px" name="status" id="">
+                                    <select style="border:1px solid #000;height: 30px" name="status" id="">
                                         <option @if($order->status == 0) selected @endif value="0">Chưa kiểm tra
                                         </option>
                                         <option @if($order->status == 1) selected @endif value="1">Đang vận
@@ -130,8 +131,8 @@
                                 </div>
                             </div>
                             {{ csrf_field() }}
-                            <div style="border-top: 1px solid #ccc;padding-top: 10px" class="form-actions">
-                                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                            <div style="margin-left:15px;padding-top: 10px" class="form-actions">
+                                <button style="width: 180px" type="submit" class="btn btn-primary">Cập nhật</button>
                             </div>
                         </form>
                     </div>

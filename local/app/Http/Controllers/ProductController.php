@@ -192,4 +192,16 @@ class ProductController extends Controller
         return view('backend.product', $data);
 
     }
+
+    public function searchprod(Request $request)
+    {
+//        dd('abc');
+        $value = $request->search;
+        $value = str_replace(' ', '%', $value);
+        $data['productlist'] = DB::table('products')->where('prod_name', 'like', '%' . $value . '%')
+            ->orWhere('prod_code', 'like', '%' . $value . '%')
+            ->orderBy('prod_id', 'asc')->paginate(6);
+
+        return view('backend.product', $data);
+    }
 }

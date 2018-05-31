@@ -119,9 +119,10 @@ class FrontendController extends Controller
             $histories = History::where("user_id", "=", $user->id)->orderby('id', 'desc')->paginate(10);
             $orders = Order::all();
             return view('frontend.history', compact('user', 'histories', 'orders'));
-        } else {
-            return \Response::view('frontend.404', array(), 404);
         }
+// else {
+//            return \Response::view('frontend.404', array(), 404);
+//        }
     }
 
     public function detailorder($id)
@@ -139,6 +140,9 @@ class FrontendController extends Controller
 
     public function searchBill(Request $request)
     {
+        $request->validate([
+            'code' => 'required',
+        ]);
 
         $data = DB::table('orders')->where('bill_code', $request->code)->get();
 
@@ -147,10 +151,12 @@ class FrontendController extends Controller
 
     public function sortAsc($id)
     {
+
         $data['items'] = Product::where('prod_cate', $id)->orderby('promotion_price', 'asc')->paginate(3);
         $data['cate'] = Category::find($id);
         return view('frontend.product_type', $data);
     }
+
     public function sortDesc($id)
     {
         $data['items'] = Product::where('prod_cate', $id)->orderby('promotion_price', 'desc')->paginate(3);

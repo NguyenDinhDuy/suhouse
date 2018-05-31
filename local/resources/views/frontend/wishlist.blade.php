@@ -5,6 +5,7 @@
     <div  style="padding-bottom:25px;margin-top: 60px;margin-left: 90px;width: 1200px; border-bottom: 2px solid #666">
         <h2 class="text-center" style="font-weight: bolder">SẢN PHẨM YÊU THÍCH</h2>
     </div>
+    @include('errors.message')
     <div class="container">
         <div id="content" class="row">
             <div class="beta-products-list">

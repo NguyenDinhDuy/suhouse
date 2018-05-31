@@ -34,9 +34,8 @@ class WishlistController extends Controller
             ->first();
 
         if (isset($status->user_id) and isset($request->product_id)) {
-            return redirect()->back()->with('flash_messaged', 'This item is already in your
-       wishlist!');
-//
+            return redirect()->back()->with('message', 'Sản phẩm này đã tồn tại trong danh sách yêu thích của bạn!');
+
 //        $status = Wishlist::where('user_id', Auth::user()->id)
 //            ->where
         } else {
@@ -46,7 +45,7 @@ class WishlistController extends Controller
             $wishlist->product_id = $request->product_id;
             $wishlist->save();
 
-            return redirect()->back()->with('flash_message',
+            return redirect()->back()->with('message',
                 'Đã thêm vào sản phẩm yêu thích');
         }
     }
@@ -57,7 +56,7 @@ class WishlistController extends Controller
         $wishlist->delete();
 
         return redirect()->back()
-            ->with('flash_message',
-                'Item successfully deleted');
+            ->with('message',
+                'Sản phẩm đã được xóa');
     }
 }

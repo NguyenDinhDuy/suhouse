@@ -1,20 +1,19 @@
 @extends('backend.master')
 @section('title','Chỉnh sửa thông tin thành viên')
 @section('main')
-
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Chỉnh sửa thông tin</h1>
             </div>
         </div><!--/.row-->
+        @include('errors.note')
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1 col-sm-9 col-sm-offset-2 col-md-4 col-md-offset-4">
                 <div class="text-center">
                     <div class="panel-body">
                         <form role="form" method="post">
                             <fieldset>
-                                @include('errors.note')
                                 <div class="form-group">
                                     <span style="color:#28b779;margin-right: 500px">Email:</span>
                                     <input style="margin-top:-25px;margin-left:130px;" class="form-control"
@@ -46,7 +45,7 @@
                                            placeholder="Confirm New Password" name="repassword"
                                            type="password">
                                 </div>
-                                <input required style="margin-right:-130px;margin-top:-20px;background: #5bb75b;border: none;color: #fff;padding: 8px 30px"
+                                <input required style="margin-right:-130px;background: #5bb75b;border: none;color: #fff;padding: 8px 30px"
                                        type="submit"
                                        name="submit" value="Xác nhận" class="pull-right">
                             </fieldset>

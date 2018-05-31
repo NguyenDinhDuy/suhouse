@@ -46,7 +46,7 @@
                                                checked
                                                 @endif>Admin
                                         <input style="margin-top:-50px;" required name="level"
-                                               type="radio" value="1"
+                                               type="radio" value="2"
                                                @if ($data["level"]==2)
                                                checked
                                                 @endif>Nhân viên
@@ -79,7 +79,6 @@
                                         $(document).ready(function () {
                                             $('#checkpass').change(function () {
                                                 if (this.checked)
-                                                //  ^
                                                     $('#updatePass').fadeIn('slow');
                                                 else
                                                     $('#updatePass').fadeOut('slow');

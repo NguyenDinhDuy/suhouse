@@ -56,15 +56,15 @@ class AdminController extends Controller
     {
 //        User đang đăng nhập
 //        if (Auth::guard('admin')->check()
-        $user_curent_login = Auth::id();
+        $user_curent_login = Auth::user()->id;
 
 //      User muốn delete
         $user_delete = Admin::find($id);
-        if (($id == 1) || ($user_curent_login != 1 && $user_delete["level"] == 2)) {
+        if (($id == 1) || ($user_curent_login != 1 && $user_delete["level"] == 1)) {
             return redirect()->back()->with('error', 'Không thể xóa thành viên này');
         } else {
             $user_delete->delete($id);
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Đã xóa thành viên thành công');
         }
     }
 
@@ -81,7 +81,7 @@ class AdminController extends Controller
 //      User muốn delete
 //        $data = User::findO($id)->toArray();
         $data = Admin::find($id);
-        if (($user_curent_login != 1) && ($id == 1 || ($data["level"] == 2 && $user_curent_login != $id))) {
+        if (($user_curent_login != 1) && ($id == 1 || ($data["level"] == 1 && $user_curent_login != $id))) {
             return redirect()->back()->with('error', 'Không thể sửa thành viên này');
         }
         return view('backend.editadmin', ['data' => $data]);
@@ -90,7 +90,6 @@ class AdminController extends Controller
     public function postEditAdmin(Request $request, $id)
     {
         $user = Admin::find($id);
-
         if ($request->password) {
             $this->validate($request,
                 [
@@ -101,7 +100,15 @@ class AdminController extends Controller
                 ]);
             $user->password = bcrypt($request->newpassword);
         }
-        $user->level = $request->level;
+        if ($user["level"] == 1 && $request->level == null) {
+            $user->level = 1;
+        }
+        if ($user["level"] == 2 && $request->level == null) {
+            $user->level = 2;
+        }
+        if ($request->level != null) {
+            $user->level = $request->level;
+        }
         $user->phone_number = $request->phone;
         $user->save();
         return redirect()->intended('admin/list');
@@ -112,7 +119,7 @@ class AdminController extends Controller
         if (Auth::guard('admin')->user()->level == 1) {
             return view('backend.addadmin');
         } else {
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Bạn không có quyền sử dụng chức năng này');
         }
     }
 
@@ -125,7 +132,7 @@ class AdminController extends Controller
         $admin->phone_number = $request->phone;
         $admin->level = 2;
         $admin->save();
-        return redirect()->intended('admin/list');
+        return redirect()->intended('admin/list')->with('error', 'Thêm thành công thành viên mới');
     }
 
 }

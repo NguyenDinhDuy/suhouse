@@ -39,6 +39,13 @@
                                     @endfor
                                 </select>
 
+                                <div class="pull-right" style="margin-bottom: 10px">
+                                    <form role="search" method="get" id="searchform" action="{{ route('searchorder') }}">
+                                        <input type="text" value="" name="search" id="s" placeholder="Nhập từ khóa..."/>
+                                        <button  type="submit" id="searchsubmit">Search
+                                        </button>
+                                    </form>
+                                </div>
 
                                 <table id="prodlist" class="table table-hover table-bordered" style="margin-top:20px;">
                                     <thead>

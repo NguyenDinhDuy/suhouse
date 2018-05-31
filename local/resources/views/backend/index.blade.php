@@ -48,8 +48,10 @@
                             </svg>
                         </div>
                         <div class="col-sm-9 col-lg-7 widget-right">
-                            <div class="large">{{$order}}</div>
-                            <div class="text-muted">Đơn hàng</div>
+                            <a href="{{asset('admin/order')}}">
+                                <div class="large">{{$order}}</div>
+                                <div class="text-muted">Đơn hàng</div>
+                            </a>
                         </div>
                     </div>
                 </div>

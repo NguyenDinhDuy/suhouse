@@ -35,7 +35,8 @@
                                 <td>{{ $admin->name }}</td>
                                 <td>{{ $admin->email }}</td>
                                 <td>{{ $admin->phone_number }}</td>
-                                <td> @if($admin->level==1)Admin @elseif($admin->level==2)Nhân viên @endif</td>
+                                <td> @if($admin->level==1 &&$admin->id==1)Super Admin @elseif($admin->level==1 &&$admin->id!=1)Admin @elseif($admin->level==2)Nhân
+                                    viên @endif</td>
                                 <td>
                                     <a href="{{asset('admin/edit/'.$admin->id)}}"
                                        class="btn btn-warning"><span
