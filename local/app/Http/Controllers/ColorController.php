@@ -22,7 +22,7 @@ class ColorController extends Controller
         $color->value = $request->name;
         $color->slug = str_slug($request->name);
         $color->save();
-        return back();
+        return back()->with('message','Thêm màu mới thành công');
     }
 
     public function getEditColor($id)
@@ -37,13 +37,13 @@ class ColorController extends Controller
         $color->value = $request->name;
         $color->slug = str_slug($request->name);
         $color->save();
-        return redirect()->intended('admin/color');
+        return redirect()->intended('admin/color')->with('message','Sửa màu sắc thành công');
     }
 
     public function getDeleteColor($id)
     {
         Color::destroy($id);
-        return back();
+        return back()->with('message','Xóa thành công màu sắc');
     }
 }
 

@@ -27,12 +27,12 @@ class AdminCouponController extends Controller
             $coupon->value = $request->value;
         }
         $coupon->save();
-        return back();
+        return back()->with('message','Thêm mã giảm giá thành công');
     }
 
     public function getDeleteCoupon($id)
     {
         Coupon::destroy($id);
-        return back();
+        return back()->with('message','Xóa thành công mã giảm giá');
     }
 }

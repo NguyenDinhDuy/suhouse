@@ -36,7 +36,7 @@ class OrderPlaced extends Mailable
         $data['sizelist'] = Size::all();
         return $this->to($this->order->bill_email, $this->order->bill_name)
             ->subject('Xác nhận đơn hàng thành công từ SUHOUSE')
-            ->markdown('frontend.mailsuccess',$data);
+            ->markdown('frontend.mailsuccess', $data);
 
     }
 }

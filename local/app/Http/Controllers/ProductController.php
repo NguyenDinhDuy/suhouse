@@ -77,8 +77,8 @@ class ProductController extends Controller
             }
         }
 
-        Session::flash('alert', "Thêm mới thành công");
-        return redirect()->intended('admin/product');
+//        Session::flash('alert', "Thêm mới thành công");
+        return redirect()->intended('admin/product')->with('message','Thêm mới sản phẩm thành công');
 
     }
 
@@ -171,13 +171,13 @@ class ProductController extends Controller
         }
 
         $product->where('prod_id', $id)->update($arr);
-        return redirect('admin/product');
+        return redirect('admin/product')->with('message','Sửa thông tin sản phẩm thành công');
     }
 
     public function getDeleteProduct($id)
     {
         Product::destroy($id);
-        return back();
+        return back()->with('message','Xóa sản phẩm thành công');
     }
 
     public function deleteImg($id)

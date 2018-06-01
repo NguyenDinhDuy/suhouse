@@ -27,20 +27,19 @@ class ThongKeController extends Controller
         $data['prices'] = DB::table('orders')->orderby('total', 'desc')->take(5)->get();
         $data['users'] = User::all();
         $data['orders'] = Order::all();
-//        $data['products'] = Product::all();
+        $data['products'] = Product::all();
 
-        foreach (Order::all() as $order) {
-            if ($order->user_id != null) {
-
-                $data['orderusers'] = DB::table('orders')
-                    ->select('users.id', \DB::raw("COUNT('orders.id') AS order_count"))
-                    ->join('users', 'users.id', '=', 'orders.user_id')
-                    ->orderBy('order_count', 'desc')
-                    ->groupBy('users.id')
-                    ->take(5)
-                    ->get();
-            }
-        }
+//        foreach (Order::all() as $order) {
+//            if ($order->user_id != null) {
+//            }
+//        }
+        $data['orderusers'] = DB::table('orders')
+            ->select('users.id', \DB::raw("COUNT('orders.id') AS order_count"))
+            ->join('users', 'users.id', '=', 'orders.user_id')
+            ->orderBy('order_count', 'desc')
+            ->groupBy('users.id')
+            ->take(5)
+            ->get();
         return view('backend.thongkeorder', $data);
     }
 

@@ -29,7 +29,7 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
         $order->status = $request->status;
         $order->save();
-        return redirect()->intended('admin/order')->with('success', 'Cập nhật đơn hàng thành công');
+        return redirect()->intended('admin/order')->with('message', 'Cập nhật đơn hàng thành công');
     }
 
 
@@ -55,7 +55,7 @@ class OrderController extends Controller
                 ->update(array('quantity' => $newqty));
         }
         Order::destroy($id);
-        return redirect()->back()->with('success', 'Đơn hàng đã được xóa thành công');
+        return redirect()->back()->with('message', 'Đơn hàng đã được xóa thành công');
     }
 
     public function filter($id)

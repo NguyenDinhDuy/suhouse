@@ -21,7 +21,7 @@ class CategoryController extends Controller
         $category->cate_name = $request->name;
         $category->cate_slug = str_slug($request->name);
         $category->save();
-        return back();
+        return back()->with('message','Thêm thành công danh mục mới');
     }
 
     public function getEditCate($id)
@@ -36,12 +36,12 @@ class CategoryController extends Controller
         $category->cate_name = $request->name;
         $category->cate_slug = str_slug($request->name);
         $category->save();
-        return redirect()->intended('admin/category');
+        return redirect()->intended('admin/category')->with('message','Sửa danh mục thành công');
     }
 
     public function getDeleteCate($id)
     {
         Category::destroy($id);
-        return back();
+        return back()->with('message','Xóa danh mục thành công');
     }
 }

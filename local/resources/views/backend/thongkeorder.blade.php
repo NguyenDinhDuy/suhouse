@@ -86,17 +86,23 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($users as $user)
-                                @foreach($orderusers as $orderuser)
-                                    @if($user->id==$orderuser->id)
-                                        <tr>
-                                            <td>{{$user->name}}</td>
-                                            <td>{{$user->email}}</td>
-                                            <td>{{$orderuser->order_count}}</td>
-                                        </tr>
-                                    @endif
+                            @if(count($orderusers)>0)
+                                @foreach($users as $user)
+                                    @foreach($orderusers as $orderuser)
+                                        @if($user->id==$orderuser->id)
+                                            <tr>
+                                                <td>{{$user->name}}</td>
+                                                <td>{{$user->email}}</td>
+                                                <td>{{$orderuser->order_count}}</td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
                                 @endforeach
-                            @endforeach
+                            @else
+                                <td colspan="3" style="color: brown;font-weight: bold">Không tìm thấy kết quả phú
+                                    hợp
+                                </td>
+                            @endif
                             </tbody>
                         </table>
                     </div>

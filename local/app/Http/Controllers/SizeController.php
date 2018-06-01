@@ -21,7 +21,7 @@ class SizeController extends Controller
         $size = new Size;
         $size->value = $request->name;
         $size->save();
-        return back();
+        return back()->with('message','Thêm kích cỡ mới thành công');
     }
 
     public function getEditSize($id)
@@ -35,13 +35,13 @@ class SizeController extends Controller
         $size = Size::find($id);
         $size->value = $request->name;
         $size->save();
-        return redirect()->intended('admin/size');
+        return redirect()->intended('admin/size')->with('message','Sửa kích cỡ thành công');;
     }
 
     public function getDeleteSize($id)
     {
         Size::destroy($id);
-        return back();
+        return back()->with('message','Xóa kích cỡ thành công');;
     }
 }
 

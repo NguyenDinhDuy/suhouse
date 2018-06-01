@@ -8,7 +8,7 @@
                 <h1 class="page-header">Danh sách các mã giảm giá</h1>
             </div>
         </div><!--/.row-->
-
+        @include('errors.message')
         <div class="row">
             <div class="col-xs-12 col-md-5 col-lg-5">
                 <div class="panel panel-primary">
@@ -53,6 +53,7 @@
                                 <tr class="bg-primary">
                                     <th>Mã code</th>
                                     <th>Thể loại</th>
+                                    <th>Giá trị</th>
                                     <th style="width:30%">Tùy chọn</th>
                                 </tr>
                                 </thead>
@@ -63,6 +64,18 @@
                                         <td @if($coupon->type=='fixed')style="font-weight:bold;color: orange"
                                             @else style="font-weight:bold;color: lightseagreen" @endif>
                                             {{$coupon->type}}</td>
+
+                                        <td @if($coupon->type=='fixed')
+                                            style="font-weight:bold;color: orange"
+                                            @else
+                                            style="font-weight:bold;color: lightseagreen"
+                                                @endif>
+                                            @if($coupon->type=='fixed')
+                                                {{presentPrice($coupon->value)}} đ
+                                            @else
+                                                {{$coupon->percent_off}} %
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{asset('admin/coupon/delete/'.$coupon->id)}}"
                                                onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục náy?')"

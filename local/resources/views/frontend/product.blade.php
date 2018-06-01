@@ -433,6 +433,7 @@
                         <div class="fb-comments" data-href="{{url("/detail/$item->prod_id/$item->prod_slug.html")}}"
                              data-width="100%" data-numposts="5"></div>
                         {{--data-href="{{url('/detail/'.$item->prod_id.'/'.$item->prod_slug.'html')}}"--}}
+                        </div>
                     </div>
                 </div>
             </div>

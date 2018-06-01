@@ -13,7 +13,9 @@
 
 Route::get('/', 'FrontendController@getHome');
 Auth::routes();
-//Route::get('test', 'OrderController@searchorder');
+//Route::get('test', function (){
+//   return view('frontend.mailsuccess');
+//});
 
 //Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 

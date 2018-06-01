@@ -7,7 +7,7 @@
                 <h1 class="page-header">Sản phẩm</h1>
             </div>
         </div><!--/.row-->
-
+        @include('errors.message')
         <div class="row">
             <div class="col-xs-12 col-md-12 col-lg-12">
 
@@ -21,7 +21,7 @@
                                 <div class="pull-right" style="margin-bottom: 10px">
                                     <form role="search" method="get" id="searchform" action="{{ route('searchprod') }}">
                                         <input type="text" value="" name="search" id="s" placeholder="Nhập từ khóa..."/>
-                                        <button  type="submit" id="searchsubmit">Search
+                                        <button type="submit" id="searchsubmit">Search
                                         </button>
                                     </form>
                                 </div>
