@@ -1,11 +1,11 @@
 @extends('backend.master')
-@section('title','Danh sách sản phẩm')
+@section('title','Quản lí danh sách khách hàng trong hệ thống')
 @section('main')
 
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Danh sách thành viên</h1>
+                <h1 class="page-header">Danh sách khách hàng</h1>
             </div>
         </div><!--/.row-->
         @include('errors.note')

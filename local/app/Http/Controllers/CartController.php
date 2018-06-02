@@ -129,8 +129,8 @@ class CartController extends Controller
                 ['prod_color_id', '=', $cart->options->color],
                 ['prod_size_id', '=', $cart->options->size],
             ])->get();
-            $a = $qty->toArray();
-            $newqty = $a[0]->quantity - $cart->qty;
+            $qtyNow = $qty->toArray();
+            $newqty = $qtyNow[0]->quantity - $cart->qty;
 
             DB::table('prod_specifi')
                 ->where([
