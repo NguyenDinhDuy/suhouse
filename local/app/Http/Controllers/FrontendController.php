@@ -116,7 +116,7 @@ class FrontendController extends Controller
     {
         if (Auth::check()) {
             $user = Auth::user();
-            $histories = History::where("user_id", "=", $user->id)->orderby('id', 'desc')->paginate(10);
+            $histories = History::where("user_id", "=", $user->id)->orderby('id', 'desc')->get();
             $orders = Order::all();
             return view('frontend.history', compact('user', 'histories', 'orders'));
         }

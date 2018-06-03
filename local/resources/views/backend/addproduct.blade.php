@@ -109,7 +109,7 @@
                                                 "                                                        <img  class=\"thumbnail avatar\" width=\"64px\"\n" +
                                                 "                                                    src=\"img/new_seo-10-64.png\">\n" +
                                                 "                                                        </td>\n" +
-                                                "                                                        <td><input name=\"quanti[]\" required type=\"number\" min=\"0\"></td>\n" +
+                                                "                                                        <td><input name=\"quanti[]\" required type=\"number\" min=\"1\"></td>\n" +
                                                 "\t\t\t\t\t\t\t\t\t                    </tr>")
 
                                             $('.avatar').off('click').click(function () {

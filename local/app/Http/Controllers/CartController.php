@@ -16,6 +16,7 @@ use App\Mail\OrderPlaced;
 use App\History;
 use App\City;
 use App\District;
+use App\Coupon;
 
 class CartController extends Controller
 {
@@ -152,6 +153,7 @@ class CartController extends Controller
         Mail::send(new OrderPlaced($order));
 
         Cart::destroy();
+        DB::table('coupons')->where('code', '=', $code)->delete();
         session()->forget('coupon');
         return redirect()->route('success', $order->bill_code)->with('success', "Đặt hàng thành công! Đang chờ xử lý đơn hàng");
 

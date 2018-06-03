@@ -56,8 +56,8 @@
                     @php $options =  unserialize($product->pivot->options);@endphp
                     <tr>
                         {{--<td>--}}
-                            {{--<img src="{{$message->embed(public_path().'/avatar/'.$options['img'])}}">--}}
-                            {{--src="{{asset('local/storage/app/avatar/'.$item->prod_thumbnail)}}">--}}
+                        {{--<img src="{{$message->embed(public_path().'/avatar/'.$options['img'])}}">--}}
+                        {{--src="{{asset('local/storage/app/avatar/'.$item->prod_thumbnail)}}">--}}
                         {{--</td>--}}
                         <td style=";padding: 5px;border: 1px solid #ccc">
                             <p class="name"><b>{{ $product->prod_name }}</b></p>

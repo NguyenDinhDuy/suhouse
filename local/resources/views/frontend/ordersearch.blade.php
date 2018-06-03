@@ -15,16 +15,17 @@
                     success: function (result) {
                         if (!$.trim(result)) {
                             var code = $('#code').val();
-                            $('#td1').html("");
+                            $('#link').html("");
                             $('#td2').html("");
                             $('#td3').html("Không tìm thấy đơn hàng: " + code);
                             $('#td4').html("");
                             $('#td5').html("");
                             $('#code').val("");
                         } else {
+
                             if (result[0].status == 0) {
 
-                                $('#td1').html(result[0].bill_code);
+                                $('#link').html(result[0].bill_code);
                                 $('#td2').html(result[0].created_at);
                                 $('#td3').html(result[0].bill_name);
                                 $('#td4').html(result[0].total).append(" đ");
@@ -32,7 +33,7 @@
                                 $('#code').val("");
                             } else if (result[0].status == 1) {
 
-                                $('#td1').html(result[0].bill_code);
+                                $('#link').html(result[0].bill_code);
                                 $('#td2').html(result[0].created_at);
                                 $('#td3').html(result[0].bill_name);
                                 $('#td4').html(result[0].total).append(" đ");
@@ -40,7 +41,7 @@
                                 $('#code').val("");
                             } else if (result[0].status == 2) {
 
-                                $('#td1').html(result[0].bill_code);
+                                $('#link').html(result[0].bill_code);
                                 $('#td2').html(result[0].created_at);
                                 $('#td3').html(result[0].bill_name);
                                 $('#td4').html(result[0].total).append(" đ");
@@ -48,13 +49,21 @@
                                 $('#code').val("");
                             } else if (result[0].status == 3) {
 
-                                $('#td1').html(result[0].bill_code);
+                                $('#link').html(result[0].bill_code);
                                 $('#td2').html(result[0].created_at);
                                 $('#td3').html(result[0].bill_name);
                                 $('#td4').html(result[0].total).append(" đ");
                                 $('#td5').html("Giao hàng thất bại");
                                 $('#code').val("");
                             }
+                            let url = '{{asset('detailorder/')}}';
+                            <?php
+                            if(Auth::check()){
+                            ?>
+                            $("#link").attr('href', url + '/' + result[0].id);
+                            <?php
+                            } ?>
+
                         }
                     }
                 });
@@ -95,7 +104,10 @@
 
         <tr>
             <td id="td1" class="text-center"
-                style="border:1px solid #666;padding-left:5px;font-weight: bold;"></td>
+                style="border:1px solid #666;padding-left:5px;font-weight: bold;">
+                <a style="color:#E32124;" id="link"></a>
+
+            </td>
             <td id="td2" class="text-center" style="border:1px solid #666;font-weight: bold"></td>
             <td id="td3" class="text-center" style="border:1px solid #666;font-weight: bold"></td>
             <td id="td4" class="text-center" style="border:1px solid #666;font-weight: bold"></td>
