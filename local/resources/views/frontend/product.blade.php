@@ -425,7 +425,7 @@
                     </div>
                 </div>
             </div>
-            <div class="space100">&nbsp;</div>
+            <div class="space50">&nbsp;</div>
 
             <div>
                 <div class="row">
@@ -438,7 +438,7 @@
                 </div>
             </div>
 
-            <div class="space50">&nbsp;</div>
+            {{--<div class="space20">&nbsp;</div>--}}
             <div class="row">
                 <div class="beta-products-list">
                     <h4 class="text-center"
@@ -529,6 +529,7 @@
                         success: function (result) {
                             //them
                             if (!$.trim(result)) {
+                                $('#sl').val(0);
                                 $('#buy').attr('disabled', true)
                             } else {
                                 let url = '{{asset('local/storage/app/avatar/')}}';

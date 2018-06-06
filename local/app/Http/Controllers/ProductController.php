@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditProductRequest;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
@@ -76,7 +77,6 @@ class ProductController extends Controller
                 $image->save();
             }
         }
-
 //        Session::flash('alert', "Thêm mới thành công");
         return redirect()->intended('admin/product')->with('message','Thêm mới sản phẩm thành công');
 
@@ -94,7 +94,7 @@ class ProductController extends Controller
     }
 
 
-    public function postEditProduct(Request $request, $id)
+    public function postEditProduct(EditProductRequest $request, $id)
     {
         $product = new Product;
 
@@ -195,7 +195,6 @@ class ProductController extends Controller
 
     public function searchprod(Request $request)
     {
-//        dd('abc');
         $value = $request->search;
         $value = str_replace(' ', '%', $value);
         $data['productlist'] = DB::table('products')->where('prod_name', 'like', '%' . $value . '%')

@@ -130,7 +130,7 @@
                                                 // "                                                        <td>" + i + "</td>\n" +
                                                 "                                                        <td>\n" +
                                                 "                                                        <select required name=\"color1[]\">\n" +
-                                                "                                                        <option>Màu</option>\n" +
+                                                "                                                        <option value=\"0\">Màu</option>\n" +
                                                 "                                                            @foreach($colorlist as $color)\n" +
                                                 "                                                        <option value=\"{{$color->color_id}}\">{{$color->value}}</option>\n" +
                                                 "                                                            @endforeach\n" +
@@ -138,7 +138,7 @@
                                                 "                                                        </td>\n" +
                                                 "                                                        <td>\n" +
                                                 "                                                        <select required name=\"size1[]\">\n" +
-                                                "                                                        <option>Size</option>\n" +
+                                                "                                                        <option value=\"0\">Size</option>\n" +
                                                 "                                                            @foreach($sizelist as $size)\n" +
                                                 "                                                        <option value=\"{{$size->size_id}}\">{{$size->value}}</option>\n" +
                                                 "                                                            @endforeach\n" +
