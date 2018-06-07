@@ -55,14 +55,14 @@ class ProductController extends Controller
         for ($i = 0; $i < $child; $i++) {
 
             $prodspecifi = new ProdSpecifi;
-            $filename = $request->imgspe[$i]->getClientOriginalName();
+            $filename1 = $request->imgspe[$i]->getClientOriginalName();
             $prodspecifi->product_id = $product->prod_id;
             $prodspecifi->prod_color_id = $request->color[$i];
             $prodspecifi->prod_size_id = $request->size[$i];
             $prodspecifi->quantity = $request->quanti[$i];
-            $prodspecifi->image = $filename;
+            $prodspecifi->image = $filename1;
             $prodspecifi->save();
-            $request->imgspe[$i]->storeAs('avatar', $filename);
+            $request->imgspe[$i]->storeAs('avatar', $filename1);
         }
 
         //Thêm nhiều ảnh
@@ -70,16 +70,15 @@ class ProductController extends Controller
             foreach ($request->file('image') as $image) {
                 $filenameWithExt = $image->getClientOriginalName();
                 $image->storeAs('avatar', $filenameWithExt);
-
                 $image = new Image;
                 $image->product_id = $product->prod_id;
                 $image->path = $filenameWithExt;
                 $image->save();
+
             }
         }
-//        Session::flash('alert', "Thêm mới thành công");
-        return redirect()->intended('admin/product')->with('message','Thêm mới sản phẩm thành công');
 
+        return redirect()->intended('admin/product')->with('message', 'Thêm mới sản phẩm thành công');
     }
 
     public function getEditProduct($id)
@@ -171,13 +170,13 @@ class ProductController extends Controller
         }
 
         $product->where('prod_id', $id)->update($arr);
-        return redirect('admin/product')->with('message','Sửa thông tin sản phẩm thành công');
+        return redirect('admin/product')->with('message', 'Sửa thông tin sản phẩm thành công');
     }
 
     public function getDeleteProduct($id)
     {
         Product::destroy($id);
-        return back()->with('message','Xóa sản phẩm thành công');
+        return back()->with('message', 'Xóa sản phẩm thành công');
     }
 
     public function deleteImg($id)
