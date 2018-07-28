@@ -12,18 +12,20 @@
     <div style="margin-top:20px;margin-bottom:0px;border-top: 1px solid #a9a9a9;padding-left: 50px;padding-right: 60px">
         <div style="padding: 30px 10px;font-weight: bold" class="row">
             <form method="post">
+                @include('errors.note')
 
                 <div style="margin-bottom:0;" class="col-sm-4">
-                    @if(count($errors) > 0)
-                        <div class="spacer"></div>
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{!! $error !!}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+                    {{--@if(count($errors) > 0)--}}
+                        {{--<div class="spacer"></div>--}}
+                        {{--<div class="alert alert-danger">--}}
+                            {{--<ul>--}}
+                                {{--@foreach ($errors->all() as $error)--}}
+                                    {{--<li>{!! $error !!}</li>--}}
+                                {{--@endforeach--}}
+                            {{--</ul>--}}
+                        {{--</div>--}}
+                    {{--@endif--}}
+
 
                     <p style="font-size: 18px;margin-bottom: 20px"><span
                                 style="color:#fff;background: #E32124;padding: 4px 10px;">1</span> HÌNH THỨC THANH TOÁN
@@ -72,14 +74,15 @@
                     <p style="padding: 10px 0;">Điện thoại: *</p>
                     <input required type="number" name="phone" style="border:1px solid #ccc;width: 385px;height: 37px">
                     {!! Form::open() !!}
-                    <p style="padding: 10px 0">Tỉnh/ Thành phố: *</p>
-                    {!! Form::select('city_id',[''=>' Chọn Tỉnh/ Thành Phố ']+$cities,null,['class'=>'form-control']) !!}
-                    <p style="padding: 10px 0">Quận/ Huyện: *</p>
-                    {!! Form::select('district_id',[''=>'Chọn Quận/ Huyện'],null,['class'=>'form-control']) !!}
+                    <p style="padding: 10px 0">Tỉnh(Thành phố): *</p>
+                    {!! Form::select('city_id',[value(0)=>'Chọn Tỉnh(Thành Phố)']+$cities,null,['class'=>'form-control']) !!}
+                    <p style="padding: 10px 0">Quận(Huyện): *</p>
+                    {!! Form::select('district_id',[value(0)=>'Chọn Quận(Huyện)'],null,['class'=>'form-control']) !!}
                     {!! Form::close() !!}
 
                     <p style="padding: 10px 0">Địa chỉ: *</p>
-                    <input required type="text" name="address" style="height: 50px;" placeholder="Xã/Phường- Thôn/Xóm- Số Nhà">
+                    <input required type="text" name="address" style="height: 50px;"
+                           placeholder="Xã(Phường) - Thôn(Xóm) - Số Nhà">
 
                     <p style="padding: 20px 0;font-size: 16px">Ghi chú:</p>
                     <input style="height: 80px;border: 1px solid #ccc;" type="text" placeholder="Ghi chú">

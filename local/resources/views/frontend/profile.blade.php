@@ -16,7 +16,7 @@
         <div id="content">
             <div class="row">
                 @include('errors.note')
-                <form action="{{asset('edit')}}" method="post" class="beta-form-checkout">
+                <form action="{{route('edit')}}" method="post" class="beta-form-checkout">
                     <div>
                         <p style="padding: 5px 0;font-size: 13px;font-family: Arial">Họ tên*</p>
                         <div style="width: 350px;">

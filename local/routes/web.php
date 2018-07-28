@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('user/activation/{token}', 'Auth\RegisterController@activateUser')->name('user.activate');
 Route::get('profile', 'FrontendController@getEditUser');
-Route::post('profile', 'FrontendController@postEditUser');
+Route::post('profile', 'FrontendController@postEditUser')->name('edit');
 Route::get('category/{id}/{slug}.html', 'FrontendController@getCategory');
 Route::get('tim-kiem.html', 'FrontendController@search')->name('search');
 Route::get('detail/{id}/{slug}.html', 'FrontendController@getDetailProduct');

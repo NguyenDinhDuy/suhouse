@@ -1,5 +1,5 @@
 @extends('backend.master')
-@section('title','Danh sách sản phẩm')
+@section('title','Danh sách đơn hàng')
 <style>
     body {
         font-size: 8px;

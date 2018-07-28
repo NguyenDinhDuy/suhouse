@@ -218,6 +218,7 @@
     <meta property="fb:admins" content="100006364260597"/>
 </head>
 <body>
+
 {{--<script lang="javascript">(function () {--}}
 {{--var pname = ((document.title != '') ? document.title : ((document.querySelector('h1') != null) ? document.querySelector('h1').innerHTML : ''));--}}
 {{--var ga = document.createElement('script');--}}
@@ -235,7 +236,7 @@
             <ul class="top-menu menu-beta l-inline">
                 <li><a href=""><i class="fa fa-home"></i> Số 55- Nguyễn Trãi- Hà Cầu- Hà Đông- Hà Nội</a></li>
                 <li><a href=""><i class="fa fa-phone"></i> 0987654321</a></li>
-                <li><a href=""><i class="fa fa-envelope "></i> toiladuy22@gmail.com</a></li>
+                <li><a href=""><i class="fa fa-envelope "></i>suhouse@gmail.com</a></li>
 
                 @if (Route::has('login'))
                     @auth
@@ -271,26 +272,6 @@
     </div> <!-- .header-top -->
     <div class="header-body">
         <div class="container beta-relative">
-            {{--<div class="pull-right beta-components space-left ov">--}}
-            {{--<div class="beta-comp" style="margin-bottom: 10px">--}}
-
-            {{--<form role="search" method="get" id="searchform" action="{{ route('search') }}">--}}
-            {{--<form role="search" method="get" id="searchform">--}}
-            {{--<input type="text" value="" name="search" id="s" placeholder="Nhập từ khóa..."/>--}}
-            {{--<button class="fa fa-search" type="submit" id="searchsubmit"></button>--}}
-            {{--</form>--}}
-            {{--</div>--}}
-            {{--<div class="beta-comp">--}}
-
-            {{--<a href="{{asset('cart/show')}}">--}}
-            {{--<img style="position: relative;" src="assets/dest/images/bag.png">--}}
-            {{--@if(Cart::count()>0)--}}
-            {{--<span style="position:absolute;text-align: center;left: 1133px;top: 10px">{{Cart::count()}}</span>--}}
-            {{--@endif--}}
-            {{--</a>--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="clearfix"></div>--}}
         </div> <!-- .container -->
     </div> <!-- .header-body -->
     <div class="header-bottom" style="padding-top:20px;background: #fff">
@@ -352,7 +333,7 @@
         if (d.getElementById(id)) return;
         js = d.createElement(s);
         js.id = id;
-        js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=429467917501529';
+        js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.0&appId=429467917501529';
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 
@@ -401,6 +382,8 @@
     });
 </script>
 
+{{--<div class="fb-page" data-href="https://www.facebook.com/tripplethrees" data-tabs="messages" data-width="360"--}}
+
 {{--Footer--}}
 <div style="margin-top: 50px" id="footer" class="color-div">
     <div class="container">
@@ -425,20 +408,20 @@
                                 <span class="fa fa-twitter" aria-hidden="true"></span>
                             </a></li>
                         <li>
-                            <a class="icon-fallback-text" href="https://www.facebook.com/ssstuttershop/"
+                            <a class="icon-fallback-text" href="https://www.facebook.com/suhousehadong/"
                                target="_blank">
                                 <span class="fa fa-facebook" aria-hidden="true"></span>
                             </a></li>
                         <li>
-                            <a class="icon-fallback-text" href="" rel="publisher" target="_blank">
+                            <a class="icon-fallback-text" href="#" rel="publisher" target="_blank">
                                 <span class="fa fa-google-plus" aria-hidden="true"></span>
                             </a></li>
                         <li>
-                            <a class="icon-fallback-text" href="www.instagram.com/ssstutter" target="_blank">
+                            <a class="icon-fallback-text" href="#" target="_blank">
                                 <span class="fa fa-instagram" aria-hidden="true"></span>
                             </a></li>
                         <li>
-                            <a class="icon-fallback-text" href="www.youtube.com/channel/UCK4XUs0UpsKDAli2GmcTOcg"
+                            <a class="icon-fallback-text" href="#"
                                target="_blank">
                                 <span class="fa fa-youtube" aria-hidden="true"></span>
                             </a></li>
@@ -452,7 +435,7 @@
                         style="font-family:monospace;border-bottom: 1px solid gray; padding-bottom:5px">LIÊN HỆ</h4>
                     <div>
                         <ul style="color: gray; font-size: 16px">
-                            <li><i class="fa fa-map-marker"></i> Address: Số 55, Ngõ 4B Phường Nguyễn Trãi, Hà Đông, HN
+                            <li><i class="fa fa-map-marker"></i> Address: Số 55, Phường Nguyễn Trãi, Hà Đông
                             </li>
                             <li style="padding-top: 5px; padding-bottom: 5px"><i class="fa fa-chevron-right"></i> Email:
                                 suhouse@gmail.com
@@ -518,12 +501,11 @@
 <script src="assets/dest/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 <script src="assets/dest/js/waypoints.min.js"></script>
 <script src="assets/dest/js/wow.min.js"></script>
-<!--customjs-->
 <script src="assets/dest/js/custom2.js"></script>
 <script>
     $(document).ready(function ($) {
         $(window).scroll(function () {
-                if ($(this).scrollTop() > 150) {
+                if ($(this).scrollTop() > 250) {
                     $(".header-bottom").addClass('fixNav')
                 } else {
                     $(".header-bottom").removeClass('fixNav')
